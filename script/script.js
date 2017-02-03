@@ -70,7 +70,7 @@ $.ajax({
     success: function(res) {
         var text = res.responseText;
         // then you can manipulate your text as you wish
-        document.getElementById('info').innerHTML = text; 
+        document.getElementById('info').innerHTML = text;
     }
 });
 
@@ -104,4 +104,87 @@ $.ajax({
     }
 });
 
+// -------------------
+/*
+function getJSONP(url, success) {
 
+    var ud = '_' + +new Date,
+        script = document.createElement('script'),
+        head = document.getElementsByTagName('head')[0] 
+               || document.documentElement;
+
+    window[ud] = function(data) {
+        head.removeChild(script);
+        success && success(data);
+    };
+
+    script.src = url.replace('callback=?', 'callback=' + ud);
+    head.appendChild(script);
+
+}
+
+getJSONP('http://bitcoin.mubiz.com/info', function(data){
+    //console.log(data);
+    //document.getElementById('blockchaininfo').innerHTML = data; 
+    var str = JSON.stringify(data, undefined, 4);
+    output(str);
+    //document.body.appendChild(document.createTextNode(JSON.stringify(data, null, 4)));
+});  
+*/
+/*
+$.get("http://bitcoin.mubiz.com/info", function(data) {
+  console.log(data);
+}, 'jsonp');
+
+function output(inp) {
+    document.body.appendChild(document.createElement('pre')).innerHTML = inp;
+}
+var obj = {a:1, 'b':'foo', c:[false,'false',null, 'null', {d:{e:1.3e5,f:'1.3e5'}}]};
+var str = JSON.stringify(obj, undefined, 4);
+output(str);
+*/
+
+/*
+var getJSON = function(url) {
+  return new Promise(function(resolve, reject) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', url, true);
+    xhr.responseType = 'json';
+    xhr.onload = function() {
+      var status = xhr.status;
+      if (status == 200) {
+        resolve(xhr.response);
+      } else {
+        reject(status);
+      }
+    };
+    xhr.send();
+  });
+};
+
+getJSON('http://bitcoin.mubiz.com/info').then(function(data) {
+    //alert('Your Json result is:  ' + data.result); //you can comment this, i used it to debug
+
+    result.innerText = data.result; //display the result in an HTML element
+}, function(status) { //error detection....
+  alert('Something went wrong.');
+});
+
+*/
+/*
+$.getJSON('http://bitcoin.mubiz.com/info', function(data){
+$('#output').html(data.contents);
+});
+
+$.ajax({
+        url: 'http://bitcoin.mubiz.com/info',
+        type: 'GET',
+        dataType: "json",
+        success: displayAll
+    });
+
+function displayAll(data){
+    var str = JSON.stringify(data, undefined, 4);
+    document.body.appendChild(document.createElement('pre')).innerHTML = str;
+}
+*/
