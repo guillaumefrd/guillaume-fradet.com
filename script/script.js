@@ -69,8 +69,14 @@ $.ajax({
     type: 'GET',
     success: function(res) {
         var text = res.responseText;
+        //var obj = JSON.parse(text);
+        //var str = JSON.stringify(text, undefined, 4);
         // then you can manipulate your text as you wish
-        document.getElementById('info').innerHTML = text;
+        //var str = JSON.stringify(text, null, "\t");
+        //var obj = JSON.parse(str);
+        //str =  JSON.stringify(text, null, "\t");
+        //document.getElementsByTagName('')ElementById('info').innerHTML = text;
+         document.getElementById('info').innerHTML = text; 
     }
 });
 
@@ -130,15 +136,17 @@ getJSONP('http://bitcoin.mubiz.com/info', function(data){
     output(str);
     //document.body.appendChild(document.createTextNode(JSON.stringify(data, null, 4)));
 });  
-*/
-/*
+
+
 $.get("http://bitcoin.mubiz.com/info", function(data) {
   console.log(data);
 }, 'jsonp');
-
+*/
 function output(inp) {
-    document.body.appendChild(document.createElement('pre')).innerHTML = inp;
+    //document.body.appendChild(document.createElement('pre')).innerHTML = inp;
+    document.body.appendChild(document.createTextNode(JSON.stringify(inp, null, 4)));
 }
+/*
 var obj = {a:1, 'b':'foo', c:[false,'false',null, 'null', {d:{e:1.3e5,f:'1.3e5'}}]};
 var str = JSON.stringify(obj, undefined, 4);
 output(str);
