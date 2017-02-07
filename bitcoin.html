@@ -12,52 +12,48 @@
 </head>
 <body>
 
-
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="index.html">IF - Blockchain Programming</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li><a href="index.html">Home</a></li>
-      <li class="active"><a href="bitcoin.html">Bitcoin</a></li>
-      <li><a href="currency.html">Currency</a></li>
-    </ul>
+  <div class="container">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">IF - Blockchain Programming</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="bitcoin.html">Bitcoin</a></li>
+        </ul>
+      </div>
+    </nav>
   </div>
-</nav>
 
-<div class="container">
-  <h1>Bitcoin</h1>
-  <p>Refresh the page if you get <i>"Error: Invalid params, response status code: 500"</i></p>
-</div>
-<br>
+  <div class="container">
+    <h1>Bitcoin</h1>
+  </div>
+  <br>
 
-<div class="container">
+  <div class="container">
+    <h3>info</h3>
+    <pre>
+      <div id="info"></div>
+    </pre>
 
-  <div id="result" style="color:red"></div>
-	
-  <h3>info</h3>
-  <pre>
-    <div id="info"></div>
-  </pre>
+    <h3>blockchain info</h3>
+    <pre>
+      <div id="blockchaininfo"></div>
+    </pre>
 
-	<h3>blockchain info</h3>
-  <pre>
-  <div id="blockchaininfo"></div>
-  </pre>
+    <h3>mining info</h3>
+    <pre>
+      <div id="mininginfo"></div>
+    </pre>
 
-	<h3>mining info</h3>
-  <pre>
-  <div id="mininginfo"></div>
-  </pre>
+    <h3>peer info</h3>
+    <pre>
+      <div id="peerinfo"></div>
+    </pre>
 
-	<h3>peer info</h3>
-  <pre>
-  <div id="peerinfo"></div>
-  </pre>
-
-</div>
-
+    <br>
+    <p>Refresh the page if you get <i>"Error: Invalid params, response status code: 500"</i></p>
+  </div>
 
 </body>
 <script src="script/script.js" type="text/javascript"></script>
