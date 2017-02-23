@@ -17,3 +17,7 @@ body {
 	margin-bottom: 50px;
 	color: red;
 }
+
+#screenshot {
+	width: 300px;
+}
