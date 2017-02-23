@@ -2,6 +2,10 @@ body {
 	width: 100%;
 }
 
+p {
+	text-align: justify;
+}
+
 #peerinfo{
 	max-height: 300px;
     overflow: auto;
