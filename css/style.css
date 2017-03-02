@@ -16,14 +16,26 @@ p {
     overflow: auto;
 }
 
+#result {
+	max-height: 300px;
+    overflow: auto;
+}
 #warning {
-	margin-top: 100px;
-	margin-bottom: 50px;
+	margin-top: 150px;
+	margin-bottom: 10px;
 	color: red;
 }
 
 #screenshot {
 	width: 300px;
+}
+
+#tryIt {
+	font-style : italic;
+}
+
+#resultDiv {
+	visibility: hidden;
 }
 
 .string { color: #86b300; }

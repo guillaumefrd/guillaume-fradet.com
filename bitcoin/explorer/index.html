@@ -8,6 +8,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" type="text/css" href="../../css/style.css">
+  <link rel="icon" href="../../img/favicon.ico"/>
   <!-- link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"-->
   <!-- script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" ></script-->
   
@@ -34,30 +35,44 @@
   <br><br>
 
   <div class="container">
-    <form>
       <div class="form-group">
-        <label for="adressInput">Adress</label>
-        <input type="search" class="form-control" id="adressInput" placeholder="Put an adress">
+        <label for="input">Search</label>
+        <input type="search" class="form-control" id="adressInput" placeholder="Example : 17LHaecYMc9682FSG911f2Vk574NmUKUWR">
+        <br>
+        <label for="sel1">Type of input</label>
+        <select class="form-control" id="sel1">
+          <option>Adress</option>
+          <option>Hash of transaction</option>
+          <option>Hash of a block</option>
+          <option>Index of a block</option>
+        </select>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+      <button type="button" class="btn btn-primary" onclick="AdressQuery()">Submit</button>
     <br><br>
 
-    <h3>Result</h3>
-    <pre>
-      <div id="result"></div>
-    </pre>
+    <div id="tryIt">Try it with : 
+      <li>17LHaecYMc9682FSG911f2Vk574NmUKUWR</li>
+      <li>1BwLUNDdzEd86Vke1C9FoULRHnvBDcTUVX</li>
+      <li>...</li>
+    </div>
+    <br>
+
+    <div id="resultDiv">
+      <h3>Result</h3>
+      <pre>
+       <div id="result"><span class="glyphicon glyphicon-hand-right"></span>  Waiting for your query.</div>
+      </pre>
+    </div>
 
 
 
     <div id=warning>
       <p><span class="glyphicon glyphicon-exclamation-sign"></span> If the containers are empty, please make sure your navigator allows the execution of unknown scripts (cf. screenshot).</p>
-      <p>&nbsp&nbsp&nbsp Refresh the page if you get <i>"Error: Invalid params, response status code: 500".</i></p>
       <img id="screenshot" src="../../img/screen_js.png" alt="Screenshot navigator">
     </div> 
     
   </div>
 
 </body>
-<script src="../../script/script.js" type="text/javascript"></script>
+<script src="../../script/explore.js" type="text/javascript"></script>
 </html>
