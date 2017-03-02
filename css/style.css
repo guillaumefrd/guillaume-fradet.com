@@ -26,8 +26,8 @@ p {
 	width: 300px;
 }
 
-.string { color: green; }
-.number { color: darkorange; }
-.boolean { color: blue; }
+.string { color: #86b300; }
+.number { color: #ff9966; }
+.boolean { color: #6666ff; }
 .null { color: magenta; }
-.key { color: red; }
+.key { color: #bf4080; }
