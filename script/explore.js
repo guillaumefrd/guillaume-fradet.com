@@ -1,24 +1,63 @@
-
-//document.getElementById("result").style.visibility = "hidden"; 
-
 function Query()
 {
+    var adress = document.getElementById("adressInput").value;
+    adress = adress.replace(/ /g,""); //supprime les espaces pour ne pas les prendre en comptpe
     var select = document.getElementById("sel1").value; 
-    //alert(select);
+    
+
     if(select == "adress")
-        AdressQuery();
+    {
+        var isAddress = /^[0-9a-zA-Z]{34}$/.test(adress);
+        if(isAddress == false)
+        {
+            document.getElementById("result").innerHTML = " <p class=\"text-danger\"><span class=\"glyphicon glyphicon-remove\"></span> Invalid input <span class=\"glyphicon glyphicon-remove\"></span></p>"
+            document.getElementById("resultDiv").style.visibility = "visible";
+        }
+    
+        else 
+            AdressQuery();
+    }
 
     if(select == "hashTransaction")
-        HashTransactionQuery();
+    {
+        var isHash  = /^[0-9A-F]{64}$/i.test(adress);
+        if(isHash == false || adress[0] == "0")
+        {
+            document.getElementById("result").innerHTML = " <p class=\"text-danger\"><span class=\"glyphicon glyphicon-remove\"></span> Invalid input <span class=\"glyphicon glyphicon-remove\"></span></p>"
+            document.getElementById("resultDiv").style.visibility = "visible";
+        }
+        
+        else
+            HashTransactionQuery();
+    }
 
     if(select == "hashBlock")
-        HashBlocQuery();
-    
+    {
+        var isHash  = /^[0-9A-F]{64}$/i.test(adress);
+        if(isHash == false || adress[0] != "0")
+        {
+            document.getElementById("result").innerHTML = " <p class=\"text-danger\"><span class=\"glyphicon glyphicon-remove\"></span> Invalid input <span class=\"glyphicon glyphicon-remove\"></span></p>"
+            document.getElementById("resultDiv").style.visibility = "visible";
+        }
+        
+        else
+            HashBlocQuery();
+    }
+
     if(select == "indexBlock")
-        IndexBlocQuery();
+    {
+        var length = adress.length;
+        var isNumber = /(^[0-9]{1}$)|(^[0-9]{2}$)|(^[0-9]{3}$)|(^[0-9]{4}$)|(^[0-9]{5}$)|(^[0-9]{6}$)/.test(adress);
+        if(isNumber == false)
+        {
+            document.getElementById("result").innerHTML = " <p class=\"text-danger\"><span class=\"glyphicon glyphicon-remove\"></span> Invalid input <span class=\"glyphicon glyphicon-remove\"></span></p>"
+            document.getElementById("resultDiv").style.visibility = "visible";
+        }
+        else
+            IndexBlocQuery();
+    }
 }
 
-//--- adress query ---//
 function AdressQuery()
 {  
     var xmlhttp = new XMLHttpRequest();
@@ -28,7 +67,6 @@ function AdressQuery()
             var jsonPretty = JSON.stringify(JSON.parse(myObj),null,2);
             jsonPretty = syntaxHighlight(jsonPretty);
             document.getElementById("result").innerHTML = jsonPretty;
-
         }
     };
     var adress = document.getElementById("adressInput").value; 
