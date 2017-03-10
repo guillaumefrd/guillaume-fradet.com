@@ -41,26 +41,27 @@
         <br>
         <label for="sel1">Type of input</label>
         <select class="form-control" id="sel1">
-          <option>Adress</option>
-          <option>Hash of transaction</option>
-          <option>Hash of a block</option>
-          <option>Index of a block</option>
+          <option value="adress">Adress</option>
+          <option value="hashTransaction">Hash of transaction</option>
+          <option value="hashBlock">Hash of a block</option>
+          <option value="indexBlock">Index of a block</option>
         </select>
       </div>
-      <button type="button" class="btn btn-primary" onclick="AdressQuery()">Submit</button>
+      <button type="button" class="btn btn-primary" onclick="Query()">Submit</button>
     <br><br>
 
     <div id="tryIt">Try it with : 
-      <li>17LHaecYMc9682FSG911f2Vk574NmUKUWR</li>
-      <li>1BwLUNDdzEd86Vke1C9FoULRHnvBDcTUVX</li>
-      <li>...</li>
+      <li>17LHaecYMc9682FSG911f2Vk574NmUKUWR (adress)</li>
+      <li>f2ee65c27a89f0bcb4cc48de55baa7f2bc3c113cee3d23c584ae643191c4cd5d (hash of a transaction)</li>
+      <li>000000001645e44d850069225bb5141254859b095500a0f98894b0fe3a6ca1ac (hash of a block)</li>
+      <li>40015 (index)</li>
     </div>
     <br>
 
     <div id="resultDiv">
       <h3>Result</h3>
       <pre>
-       <div id="result"><span class="glyphicon glyphicon-hand-down"></span>  Please read the warning</div>
+       <div id="result"><span class="glyphicon glyphicon-hand-down"></span>  Please read the warning or enter a correct input</div>
       </pre>
     </div>
 

@@ -1,6 +1,23 @@
 
 //document.getElementById("result").style.visibility = "hidden"; 
 
+function Query()
+{
+    var select = document.getElementById("sel1").value; 
+    //alert(select);
+    if(select == "adress")
+        AdressQuery();
+
+    if(select == "hashTransaction")
+        HashTransactionQuery();
+
+    if(select == "hashBlock")
+        HashBlocQuery();
+    
+    if(select == "indexBlock")
+        IndexBlocQuery();
+}
+
 //--- adress query ---//
 function AdressQuery()
 {  
@@ -16,6 +33,66 @@ function AdressQuery()
     };
     var adress = document.getElementById("adressInput").value; 
     var strAdress = "http://bitcoin.mubiz.com/address/" + adress + "/";
+    //console.log(strAdress);
+    xmlhttp.open("GET", strAdress, true);
+    xmlhttp.send();
+    document.getElementById("resultDiv").style.visibility = "visible"; 
+}
+
+function HashTransactionQuery()
+{  
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var myObj = this.responseText;
+            var jsonPretty = JSON.stringify(JSON.parse(myObj),null,2);
+            jsonPretty = syntaxHighlight(jsonPretty);
+            document.getElementById("result").innerHTML = jsonPretty;
+
+        }
+    };
+    var adress = document.getElementById("adressInput").value; 
+    var strAdress = "http://bitcoin.mubiz.com/transaction/" + adress + "/";
+    //console.log(strAdress);
+    xmlhttp.open("GET", strAdress, true);
+    xmlhttp.send();
+    document.getElementById("resultDiv").style.visibility = "visible"; 
+}
+
+function HashBlocQuery()
+{  
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var myObj = this.responseText;
+            var jsonPretty = JSON.stringify(JSON.parse(myObj),null,2);
+            jsonPretty = syntaxHighlight(jsonPretty);
+            document.getElementById("result").innerHTML = jsonPretty;
+
+        }
+    };
+    var adress = document.getElementById("adressInput").value; 
+    var strAdress = "http://bitcoin.mubiz.com/block_hash/" + adress + "/";
+    //console.log(strAdress);
+    xmlhttp.open("GET", strAdress, true);
+    xmlhttp.send();
+    document.getElementById("resultDiv").style.visibility = "visible"; 
+}
+
+function IndexBlocQuery()
+{  
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            var myObj = this.responseText;
+            var jsonPretty = JSON.stringify(JSON.parse(myObj),null,2);
+            jsonPretty = syntaxHighlight(jsonPretty);
+            document.getElementById("result").innerHTML = jsonPretty;
+
+        }
+    };
+    var adress = document.getElementById("adressInput").value; 
+    var strAdress = "http://bitcoin.mubiz.com/block_index/" + adress + "/";
     //console.log(strAdress);
     xmlhttp.open("GET", strAdress, true);
     xmlhttp.send();
