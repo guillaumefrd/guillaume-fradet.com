@@ -1,9 +1,28 @@
+html {
+	height: 100%;
+}
+
 body {
 	width: 100%;
+	min-height: 100%;
+  	margin: 0;
+  	padding: 0;
+  	position: relative;
 }
 
 p {
 	text-align: justify;
+}
+
+footer {
+	background-color: #f2f2f2;
+	padding: 5px;
+	left:0;
+	right: 0;
+}
+
+footer p {
+	text-align: center;
 }
 
 #peerinfo{

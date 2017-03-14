@@ -1,4 +1,5 @@
 
+
 $(document).ready(function() {
 	$.ajax({
 		url : "https://api.blockcypher.com/v1/btc/main",
@@ -22,14 +23,14 @@ $(document).ready(function() {
 $(document).ready(function() {
 	$.ajax({
 		url : "https://blockchain.info/tobtc?currency=EUR&value=1",
-		dataType : "json",
+		dataType : "html",
 		contentType : "application/json; charset=utf-8",
 		type : "GET",
 		timeout:	"5000",
 		async : false,
 
 		success : function(data) {
-			$('#bitcoin_change').append(1/data.height);
+			$('#bitcoin_change').append(data); //inverse pour avoir dans l'autre sens de change
 		},
 
 		error : function(xhr, status, err) {
@@ -48,7 +49,7 @@ $(document).ready(function() {
 		async : false,
 
 		success : function(data) {
-			$('#bitcoin_change_usd').append(1/data.height);
+			$('#bitcoin_change_usd').append(data);
 		},
 
 		error : function(xhr, status, err) {
@@ -56,4 +57,3 @@ $(document).ready(function() {
 		}
 	});
 });
-
