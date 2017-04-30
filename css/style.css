@@ -129,3 +129,11 @@ footer p {
     background-color: #3399ff;
     color: white;
 }
+
+#qrcode {
+    margin-top: 20px;
+}
+#qrcode img {
+    margin-left: auto;
+    margin-right: auto; 
+}
