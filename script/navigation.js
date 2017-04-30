@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
 	//change en EUR
 	$.ajax({

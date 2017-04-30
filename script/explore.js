@@ -1,7 +1,7 @@
 function Query()
 {
     var adress = document.getElementById("adressInput").value;
-    adress = adress.replace(/ /g,""); //supprime les espaces pour ne pas les prendre en comptpe
+    adress = adress.replace(/ /g,""); //supprime les espaces pour ne pas les prendre en compte
     var select = document.getElementById("sel1").value; 
     
 

@@ -1,4 +1,3 @@
-
 var xmlhttp = new XMLHttpRequest();
 xmlhttp.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
@@ -46,8 +45,6 @@ xmlhttp.onreadystatechange = function() {
 };
 xmlhttp.open("GET", "https://bitcoin.mubiz.com/peerinfo", true);
 xmlhttp.send();
-
-
 
 
 function syntaxHighlight(json) {
