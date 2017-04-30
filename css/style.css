@@ -79,30 +79,20 @@ footer p {
 	font-size: 400%;
 }
 
-.panel-green {
-    border-color: #5cb85c;
-}
-
 .panel-green > .panel-heading {
-    border-color: #5cb85c;
     color: #fff;
-    background-color: #5cb85c;
+    background-color: #00cc66;
 }
 
 .panel-green > a {
-    color: #5cb85c;
+    color: #00cc66;
 }
 
 .panel-green > a:hover {
     color: #3d8b3d;
 }
 
-.panel-red {
-    border-color: #d9534f;
-}
-
 .panel-red > .panel-heading {
-    border-color: #d9534f;
     color: #fff;
     background-color: #d9534f;
 }
@@ -115,30 +105,27 @@ footer p {
     color: #b52b27;
 }
 
-.panel-yellow {
-    border-color: #f0ad4e;
-}
-
 .panel-yellow > .panel-heading {
-    border-color: #f0ad4e;
     color: #fff;
-    background-color: #f0ad4e;
+    background-color: #ff9966;
 }
 
-.panel-yellow > a {
-    color: #f0ad4e;
-}
-
-.panel-yellow > a:hover {
-    color: #df8a13;
+.panel-yellow {
+    background-color: #ff9966
+    color: white;
 }
 
 .panel-orange {
     background-color: #ff6666;
     color: white;
 }
+
 .panel-pink {
     background-color: #cc3399;
     color: white;
 }
 
+.panel-blue {
+    background-color: #3399ff;
+    color: white;
+}
