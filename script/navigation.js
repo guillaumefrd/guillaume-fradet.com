@@ -1,94 +1,61 @@
 
-
 $(document).ready(function() {
+	//change en EUR
 	$.ajax({
-		url : "https://api.blockcypher.com/v1/btc/main",
+		url : "https://blockchain.info/ticker?cors=true",
 		dataType : "json",
 		contentType : "application/json; charset=utf-8",
 		type : "GET",
 		timeout:	"5000",
-		async : false,
+		async : true,
 
 		success : function(data) {
-			$('#bitcoin_block_number').append(data.height);
-		},
-
-		error : function(xhr, status, err) {
-			$('#bitcoin_block_number').append(err+" N/A");
-		}
-	});
-});
-
-$(document).ready(function() {
-	$.ajax({
-		url : "https://blockchain.info/tobtc?currency=EUR&value=1",
-		dataType : "html",
-		contentType : "application/json; charset=utf-8",
-		type : "GET",
-		timeout:	"5000",
-		async : false,
-
-		success : function(data) {
-			$('#bitcoin_change').append((1/data).toFixed(3)); //inverse pour avoir dans l'autre sens de change
+			var res = $('data')
+			$('#bitcoin_change').append(data.EUR["15m"]); 
 		},
 
 		error : function(xhr, status, err) {
 			$('#bitcoin_change').append(err+" N/A");
 		}
 	});
-});
 
-$(document).ready(function() {
+	//change en USD
 	$.ajax({
-		url : "https://blockchain.info/tobtc?currency=USD&value=1",
+		url : "https://blockchain.info/ticker?cors=true",
 		dataType : "json",
 		contentType : "application/json; charset=utf-8",
 		type : "GET",
 		timeout:	"5000",
-		async : false,
+		async : true,
 
 		success : function(data) {
-			$('#bitcoin_change_usd').append((1/data).toFixed(3));
+			$('#bitcoin_change_usd').append(data.USD["15m"]);
 		},
 
 		error : function(xhr, status, err) {
 			$('#bitcoin_change_usd').append(err+" N/A");
 		}
 	});
-});
 
-$(document).ready(function() {
+	//nombre de block, minutes entre les blocks, revenus des mineurs, taille des blocks
 	$.ajax({
-		url : "https://api.blockchain.info/stats",
+		url : "https://api.blockchain.info/stats?cors=true",
 		dataType : "json",
-		contentType : "application/json; charset=utf-8",
 		type : "GET",
 		timeout:	"5000",
-		async : false,
+		async : true,
 
 		success : function(data) {
-			$('#bitcoin_minutes').append(data);
+			$('#bitcoin_block_number').append(data.n_blocks_total);
+			$('#bitcoin_minutes').append(data.minutes_between_blocks);
+			$('#miners_revenue_btc').append(data.miners_revenue_btc);
+			$('#blocks_size').append(data.blocks_size);
 		},
 
 		error : function(xhr, status, err) {
 			$('#bitcoin_minutes').append(err+" N/A");
 		}
 	});
-});
-/*
-var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "https://api.blockchain.info/stats",
-  "method": "GET",
-  "headers": {
-    "cache-control": "no-cache",
-    "postman-token": "16b6a853-ce1b-0fb9-8364-5a79c194e49a"
-  }
-}
 
-$.ajax(settings).done(function (response) {
-  alert(response);
 });
 
-*/

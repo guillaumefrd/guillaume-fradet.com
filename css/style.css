@@ -132,3 +132,13 @@ footer p {
 .panel-yellow > a:hover {
     color: #df8a13;
 }
+
+.panel-orange {
+    background-color: #ff6666;
+    color: white;
+}
+.panel-pink {
+    background-color: #cc3399;
+    color: white;
+}
+
