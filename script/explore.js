@@ -18,7 +18,7 @@ function Query()
     }
 
     if(select == "hashTransaction")
-    {
+    {   
         var isHash  = /^[0-9A-F]{64}$/i.test(adress);
         if(isHash == false || adress[0] == "0")
         {
@@ -70,7 +70,6 @@ function AdressQuery()
     };
     var adress = document.getElementById("adressInput").value; 
     var strAdress = "https://bitcoin.mubiz.com/address/" + adress + "/";
-    //console.log(strAdress);
     xmlhttp.open("GET", strAdress, true);
     xmlhttp.send();
     document.getElementById("resultDiv").style.visibility = "visible"; 
@@ -90,7 +89,6 @@ function HashTransactionQuery()
     };
     var adress = document.getElementById("adressInput").value; 
     var strAdress = "https://bitcoin.mubiz.com/transaction/" + adress + "/";
-    //console.log(strAdress);
     xmlhttp.open("GET", strAdress, true);
     xmlhttp.send();
     document.getElementById("resultDiv").style.visibility = "visible"; 
@@ -110,7 +108,6 @@ function HashBlocQuery()
     };
     var adress = document.getElementById("adressInput").value; 
     var strAdress = "https://bitcoin.mubiz.com/block_hash/" + adress + "/";
-    //console.log(strAdress);
     xmlhttp.open("GET", strAdress, true);
     xmlhttp.send();
     document.getElementById("resultDiv").style.visibility = "visible"; 
@@ -130,7 +127,6 @@ function IndexBlocQuery()
     };
     var adress = document.getElementById("adressInput").value; 
     var strAdress = "https://bitcoin.mubiz.com/block_index/" + adress + "/";
-    //console.log(strAdress);
     xmlhttp.open("GET", strAdress, true);
     xmlhttp.send();
     document.getElementById("resultDiv").style.visibility = "visible"; 
