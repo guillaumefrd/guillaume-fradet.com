@@ -32,26 +32,28 @@
   <br><br>
 
   <div class="container" id="block-container">
-      <div class="form-group">
-        <label for="input">Search</label>
-        <input type="search" class="form-control" id="adressInput" placeholder="Example : 17LHaecYMc9682FSG911f2Vk574NmUKUWR">
-        <br>
-        <label for="sel1">Type of input</label>
-        <select class="form-control" id="sel1">
-          <option value="adress">Adress</option>
-          <option value="hashTransaction">Hash of transaction</option>
-          <option value="hashBlock">Hash of a block</option>
-          <option value="indexBlock">Index of a block</option>
-        </select>
-      </div>
-      <button type="button" class="btn btn-primary" onclick="Query()">Submit</button>
+    <div class="form-group">
+      <label for="input">Search</label>
+      <input type="search" class="form-control" id="adressInput" placeholder="Example : 17LHaecYMc9682FSG911f2Vk574NmUKUWR">
+      <br>
+      <label for="sel1">Type of input</label>
+      <select class="form-control" id="sel1">
+        <option value="adress">Adress</option>
+        <option value="hashTransaction">Hash of transaction</option>
+        <option value="hashBlock">Hash of a block</option>
+        <option value="indexBlock">Index of a block</option>
+      </select>
+    </div>
+    <button type="button" class="btn btn-primary" onclick="Query()">Submit</button>
     <br><br>
 
-    <div id="tryIt">Try it with : 
-      <li>17LHaecYMc9682FSG911f2Vk574NmUKUWR (adress)</li>
-      <li>445328234a3391dc9dd98221cd7896ff1ef81987d45f1d78e618fcfe45372c93 (hash of a transaction)</li>
-      <li>000000001645e44d850069225bb5141254859b095500a0f98894b0fe3a6ca1ac (hash of a block)</li>
-      <li>40015 (index)</li>
+    <div id="tryIt">Click on these examples to try them: 
+      <div class="list-group">
+        <a id="ExampleAdress" class="list-group-item list-group-item-success" value="17LHaecYMc9682FSG911f2Vk574NmUKUWR" onclick="tryItAdress()">17LHaecYMc9682FSG911f2Vk574NmUKUWR (adress)</a>
+        <a id="ExampleHashTr" class="list-group-item list-group-item-info" value="445328234a3391dc9dd98221cd7896ff1ef81987d45f1d78e618fcfe45372c93" onclick="tryItHashTr()">445328234a3391dc9dd98221cd7896ff1ef81987d45f1d78e618fcfe45372c93 (hash of a transaction)</a>
+        <a id="ExampleHashBlk" class="list-group-item list-group-item-warning" value="000000001645e44d850069225bb5141254859b095500a0f98894b0fe3a6ca1ac" onclick="tryItHashBlk()">000000001645e44d850069225bb5141254859b095500a0f98894b0fe3a6ca1ac (hash of a block)</a>
+        <a id="ExampleIndex" class="list-group-item list-group-item-danger" value="40015" onclick="tryItIndex()">40015 (index)</a>
+      </div>
     </div>
     <br>
 
@@ -59,14 +61,19 @@
       <h3>Result</h3>
       <pre>
        <div id="result"><span class="glyphicon glyphicon-hand-down"></span>  Please read the warning or enter a correct input</div>
-      </pre>
-    </div>
-  </div>
+     </pre>
+   </div>
+ </div>
 
-  <footer class="container-fluid text-center">
-    <p>(c) Guillaume Fradet</p>
-  </footer>
+
+ <div id="qrcode"></div>  
+
+ <footer class="container-fluid text-center">
+  <p>(c) Guillaume Fradet</p>
+</footer>
 
 </body>
 <script src="../../script/explore.js" type="text/javascript"></script>
+<script src="../../script/qrcode.js" type="text/javascript"></script>
+<script src="../../script/createQR.js" type="text/javascript"></script>
 </html>

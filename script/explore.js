@@ -3,7 +3,6 @@ function Query()
     var adress = document.getElementById("adressInput").value;
     adress = adress.replace(/ /g,""); //supprime les espaces pour ne pas les prendre en compte
     var select = document.getElementById("sel1").value; 
-    
 
     if(select == "adress")
     {
@@ -156,3 +155,30 @@ function syntaxHighlight(json) {
     });
 }
 
+function tryItAdress()
+{
+    var example = $('#ExampleAdress').attr('value'); 
+    $('#adressInput').attr('value',example);
+    $('#sel1').val('adress');
+}
+
+function tryItHashTr()
+{
+    var example = $('#ExampleHashTr').attr('value'); 
+    $('#adressInput').attr('value',example);
+    $('#sel1').val('hashTransaction');
+}
+
+function tryItHashBlk()
+{
+    var example = $('#ExampleHashBlk').attr('value'); 
+    $('#adressInput').attr('value',example);
+    $('#sel1').val('hashBlock');
+}
+
+function tryItIndex()
+{
+    var example = $('#ExampleIndex').attr('value'); 
+    $('#adressInput').attr('value',example);
+    $('#sel1').val('indexBlock');
+}

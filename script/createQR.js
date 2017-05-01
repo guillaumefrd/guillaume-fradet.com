@@ -8,5 +8,5 @@ function () {
 	correctLevel : QRCode.CorrectLevel.H
 });
 
-	qrcode.makeCode("https://www.vaultoro.com/images/advantages/face-book-bitcoin-gold-vaultoro.jpg");
+	qrcode.makeCode("https://www.linkedin.com/in/fradetguillaume/");
 });
