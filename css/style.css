@@ -40,23 +40,9 @@ footer p {
 	max-height: 600px;
     overflow: auto;
 }
-#warning {
-	margin-top: 30px;
-	padding: 5px;
-	text-align: center;
-}
-
-#warning p {
-	text-align: center;
-}
 
 .glyphicon-exclamation-sign {
 	color: red;
-}
-
-#screenshot {
-	width: 300px;
-	box-shadow: 1px 1px 10px #bfbfbf;
 }
 
 #tryIt {
@@ -66,6 +52,20 @@ footer p {
 
 #resultDiv {
 	visibility: hidden;
+}
+
+#qrcode {
+    margin-top: 20px;
+}
+#qrcode img {
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+#block-container {
+    padding: 15px; 
+    background-color: #f2f2f2;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 1px 10px 0 rgba(0, 0, 0, 0.19);
 }
 
 .string { color: #86b300; }
@@ -129,18 +129,4 @@ footer p {
 .panel-blue {
     background-color: #3399ff;
     color: white;
-}
-
-#qrcode {
-    margin-top: 20px;
-}
-#qrcode img {
-    margin-left: auto;
-    margin-right: auto; 
-}
-
-#block-container {
-    padding: 15px; 
-    background-color: #f2f2f2;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 1px 10px 0 rgba(0, 0, 0, 0.19);
 }
