@@ -1,3 +1,8 @@
 .hero.is-primary {
   padding: 30px;
+
+}
+
+html {
+  font-size: 150%;
 }
