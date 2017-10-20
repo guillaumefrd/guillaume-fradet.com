@@ -54,16 +54,20 @@ footer p {
 	visibility: hidden;
 }
 
-#qrcode {
-    margin-top: 20px;
+.LI-badge-container.horizontal.light{
+	margin-top: 30px;
+	margin-left: auto;
+	margin-right: auto;
 }
+
 #qrcode img {
-    margin-left: auto;
-    margin-right: auto; 
+		margin-top: 60px;
+		margin-left: auto;
+		margin-right: auto;
 }
 
 #block-container {
-    padding: 15px; 
+    padding: 15px;
     background-color: #f2f2f2;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0), 0 1px 10px 0 rgba(0, 0, 0, 0.19);
 }
