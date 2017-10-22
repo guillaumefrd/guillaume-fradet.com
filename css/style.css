@@ -47,7 +47,8 @@ h6 {
 }
 
 hr.star-light,
-hr.star-primary {
+hr.star-primary,
+hr.star-grey {
   max-width: 250px;
   margin: 25px auto 30px;
   padding: 0;
@@ -56,7 +57,8 @@ hr.star-primary {
   border-top: solid 5px; }
 
 hr.star-light:after,
-hr.star-primary:after {
+hr.star-primary:after,
+hr.star-grey:after {
   font-family: FontAwesome;
   font-size: 2em;
   position: relative;
@@ -78,6 +80,13 @@ hr.star-primary {
 hr.star-primary:after {
   color: #2C3E50;
   background-color: white; }
+
+  hr.star-grey {
+    border-color: #2C3E50; }
+
+  hr.star-grey:after {
+    color: #2C3E50;
+    background-color: #f2f2f2; }
 
 .img-centered {
   margin: 0 auto; }
@@ -584,3 +593,7 @@ footer {
     .timeline .timeline-body > ul,
     .timeline .timeline-body > p {
       margin-bottom: 0; }
+
+#contact {
+  background: #f2f2f2;
+}
