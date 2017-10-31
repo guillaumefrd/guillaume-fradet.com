@@ -602,3 +602,50 @@ footer {
   margin-top: 1em;
   margin-bottom: 2em;
 }
+
+
+#skills .tags li {
+  background-color: white;
+  border:1px solid #33a4c9;
+  border-radius: 15px;
+  color:#fff;
+  display: inline-block;
+  line-height: 13px;
+  margin: 0 7px 17px 0;
+  padding: 5px 10px;
+}
+
+#skills .barres li {
+  margin-bottom: 21px;
+  position: relative;
+}
+
+#skills .barres li:after {
+  background: #33a4c9;
+  bottom: -4px;
+  content: ' ';
+  display: block;
+  height: 5px;
+  position: absolute;
+  width:100%;
+}
+
+#skills .barres li span {
+  background: white;
+  bottom: -4px;
+  content: ' ';
+  display: block;
+  height: 5px;
+  left: 0;
+  position: absolute;
+  width: inherit;
+  z-index: 1;
+}
+
+#skills ul {
+  list-style: none;
+}
+
+#skillsbar {
+  margin-top: 4em;
+}
