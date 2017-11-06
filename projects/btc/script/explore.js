@@ -2,7 +2,7 @@ function Query()
 {
     var adress = document.getElementById("adressInput").value;
     adress = adress.replace(/ /g,""); //supprime les espaces pour ne pas les prendre en compte
-    var select = document.getElementById("sel1").value; 
+    var select = document.getElementById("sel1").value;
 
     if(select == "adress")
     {
@@ -12,20 +12,20 @@ function Query()
             document.getElementById("result").innerHTML = " <p class=\"text-danger\"><span class=\"glyphicon glyphicon-remove\"></span> Invalid input <span class=\"glyphicon glyphicon-remove\"></span></p>"
             document.getElementById("resultDiv").style.visibility = "visible";
         }
-    
-        else 
+
+        else
             AdressQuery();
     }
 
     if(select == "hashTransaction")
-    {   
+    {
         var isHash  = /^[0-9A-F]{64}$/i.test(adress);
         if(isHash == false || adress[0] == "0")
         {
             document.getElementById("result").innerHTML = " <p class=\"text-danger\"><span class=\"glyphicon glyphicon-remove\"></span> Invalid input <span class=\"glyphicon glyphicon-remove\"></span></p>"
             document.getElementById("resultDiv").style.visibility = "visible";
         }
-        
+
         else
             HashTransactionQuery();
     }
@@ -38,7 +38,7 @@ function Query()
             document.getElementById("result").innerHTML = " <p class=\"text-danger\"><span class=\"glyphicon glyphicon-remove\"></span> Invalid input <span class=\"glyphicon glyphicon-remove\"></span></p>"
             document.getElementById("resultDiv").style.visibility = "visible";
         }
-        
+
         else
             HashBlocQuery();
     }
@@ -58,7 +58,7 @@ function Query()
 }
 
 function AdressQuery()
-{  
+{
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -68,15 +68,15 @@ function AdressQuery()
             document.getElementById("result").innerHTML = jsonPretty;
         }
     };
-    var adress = document.getElementById("adressInput").value; 
-    var strAdress = "https://bitcoin.mubiz.com/address/" + adress + "/";
+    var adress = document.getElementById("adressInput").value;
+    var strAdress = "https://bitcoin.mubiz.com/address/bitcoin_address/" + adress + "/";
     xmlhttp.open("GET", strAdress, true);
     xmlhttp.send();
-    document.getElementById("resultDiv").style.visibility = "visible"; 
+    document.getElementById("resultDiv").style.visibility = "visible";
 }
 
 function HashTransactionQuery()
-{  
+{
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -87,15 +87,15 @@ function HashTransactionQuery()
 
         }
     };
-    var adress = document.getElementById("adressInput").value; 
+    var adress = document.getElementById("adressInput").value;
     var strAdress = "https://bitcoin.mubiz.com/transaction/" + adress + "/";
     xmlhttp.open("GET", strAdress, true);
     xmlhttp.send();
-    document.getElementById("resultDiv").style.visibility = "visible"; 
+    document.getElementById("resultDiv").style.visibility = "visible";
 }
 
 function HashBlocQuery()
-{  
+{
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -106,15 +106,15 @@ function HashBlocQuery()
 
         }
     };
-    var adress = document.getElementById("adressInput").value; 
+    var adress = document.getElementById("adressInput").value;
     var strAdress = "https://bitcoin.mubiz.com/block_hash/" + adress + "/";
     xmlhttp.open("GET", strAdress, true);
     xmlhttp.send();
-    document.getElementById("resultDiv").style.visibility = "visible"; 
+    document.getElementById("resultDiv").style.visibility = "visible";
 }
 
 function IndexBlocQuery()
-{  
+{
     var xmlhttp = new XMLHttpRequest();
     xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
@@ -125,11 +125,11 @@ function IndexBlocQuery()
 
         }
     };
-    var adress = document.getElementById("adressInput").value; 
+    var adress = document.getElementById("adressInput").value;
     var strAdress = "https://bitcoin.mubiz.com/block_index/" + adress + "/";
     xmlhttp.open("GET", strAdress, true);
     xmlhttp.send();
-    document.getElementById("resultDiv").style.visibility = "visible"; 
+    document.getElementById("resultDiv").style.visibility = "visible";
 }
 
 function syntaxHighlight(json) {
@@ -153,28 +153,28 @@ function syntaxHighlight(json) {
 
 function tryItAdress()
 {
-    var example = $('#ExampleAdress').attr('value'); 
+    var example = $('#ExampleAdress').attr('value');
     $('#adressInput').attr('value',example);
     $('#sel1').val('adress');
 }
 
 function tryItHashTr()
 {
-    var example = $('#ExampleHashTr').attr('value'); 
+    var example = $('#ExampleHashTr').attr('value');
     $('#adressInput').attr('value',example);
     $('#sel1').val('hashTransaction');
 }
 
 function tryItHashBlk()
 {
-    var example = $('#ExampleHashBlk').attr('value'); 
+    var example = $('#ExampleHashBlk').attr('value');
     $('#adressInput').attr('value',example);
     $('#sel1').val('hashBlock');
 }
 
 function tryItIndex()
 {
-    var example = $('#ExampleIndex').attr('value'); 
+    var example = $('#ExampleIndex').attr('value');
     $('#adressInput').attr('value',example);
     $('#sel1').val('indexBlock');
 }
