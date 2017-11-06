@@ -48,7 +48,8 @@ h6 {
 
 hr.star-light,
 hr.star-primary,
-hr.star-grey {
+hr.star-grey,
+hr.star-transparent {
   max-width: 250px;
   margin: 25px auto 30px;
   padding: 0;
@@ -187,7 +188,14 @@ header.masthead {
   padding-bottom: 50px;
   text-align: center;
   color: white;
-  background: #3895cb; }
+  background-image: url("../img/header-bg.jpg");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
   header.masthead img {
     display: block;
     margin: 0 auto 20px; }
@@ -199,7 +207,7 @@ header.masthead {
     text-transform: uppercase; }
   header.masthead .intro-text .skills {
     font-size: 1.25em;
-    font-weight: 300; }
+    font-weight: 500; }
 
 @media (min-width: 768px) {
   header.masthead {
