@@ -614,7 +614,7 @@ footer {
 
 #skills .tags li {
   background-color: white;
-  border:1px solid #33a4c9;
+  border:1px solid #006bb3;
   border-radius: 15px;
   color:#fff;
   display: inline-block;
@@ -629,7 +629,7 @@ footer {
 }
 
 #skills .barres li:after {
-  background: #33a4c9;
+  background: #006bb3;
   bottom: -4px;
   content: ' ';
   display: block;
