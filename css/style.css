@@ -657,3 +657,10 @@ footer {
 #skillsbar {
   margin-top: 4em;
 }
+
+#downloadCV {
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
