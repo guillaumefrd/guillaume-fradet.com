@@ -6,5 +6,4 @@ $(document).ready(function() {
   	$(this).append($("<span></span>").animate({
   		width : ''+ pourcentage +'%' }, 2000));
   });
-
 });
