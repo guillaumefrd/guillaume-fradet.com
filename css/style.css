@@ -664,3 +664,23 @@ footer {
   margin-top: 1em;
   margin-bottom: 2em;
 }
+
+#languages {
+  overflow: hidden;
+  background: #333;
+  position: fixed;
+  padding: 10px;
+  bottom: 0;
+  right: 30px;
+  width: 100px;
+  height: 50px;
+}
+
+#fr {
+  margin-right: 10px;
+  width: 32px;
+}
+
+#en {
+  width: 32px;
+}
