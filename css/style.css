@@ -669,6 +669,7 @@ footer {
   overflow: hidden;
   background: #333;
   position: fixed;
+  z-index: 3;
   padding: 10px;
   bottom: 0;
   right: 60px;
