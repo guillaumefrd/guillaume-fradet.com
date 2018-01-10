@@ -685,3 +685,8 @@ footer {
 #en {
   width: 32px;
 }
+
+#coord {
+  margin-top: 3em;  
+  text-align: center;
+}
