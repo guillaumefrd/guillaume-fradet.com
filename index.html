@@ -125,6 +125,7 @@
                   <div class="timeline-body">
                     <p class="text-muted">Grâce à un programme d'échange, j'ai eu la chance d'étudier un semestre dans cette université américaine, réputée pour la qualité de formation de ses ingénieurs.</p>
                     <p class="text-muted">Majeur : Computer Science</p>
+                    <a href="https://www.esilv.fr/semestre-detudes-aux-etats-unis-guillaume-promo-2019-echange-a-louisiana-tech-university/" target="_blank">Un semestre d’études aux Etats-Unis : Guillaume, Promo 2019, en échange à Louisiana Tech University (ESILV)</a>
                   </div>
                 </div>
               </li>
@@ -240,8 +241,9 @@
       <div class="container">
         <h2 class="text-center">Portfolio</h2>
         <hr class="star-primary">
+        <br>
         <div class="row">
-          <div class="col-sm-4 portfolio-item">
+          <div class="col-sm-6 portfolio-item">
             <a class="portfolio-link" href="#portfolioModal1" data-toggle="modal">
               <div class="caption">
                 <div class="caption-content">
@@ -251,8 +253,18 @@
               <img class="img-fluid" src="img/portfolio/robot.png" alt="">
             </a>
           </div>
-          <div class="col-sm-4 portfolio-item">
+          <div class="col-sm-6 portfolio-item">
             <a class="portfolio-link" href="#portfolioModal2" data-toggle="modal">
+              <div class="caption">
+                <div class="caption-content">
+                  <i class="fa fa-search-plus fa-3x"></i>
+                </div>
+              </div>
+              <img class="img-fluid" src="img/portfolio/top-chef.png" alt="">
+            </a>
+          </div>
+          <div class="col-sm-6 portfolio-item">
+            <a class="portfolio-link" href="#portfolioModal3" data-toggle="modal">
               <div class="caption">
                 <div class="caption-content">
                   <i class="fa fa-search-plus fa-3x"></i>
@@ -261,8 +273,8 @@
               <img class="img-fluid" src="img/portfolio/bitcoin.png" alt="">
             </a>
           </div>
-          <div class="col-sm-4 portfolio-item">
-            <a class="portfolio-link" href="#portfolioModal3" data-toggle="modal">
+          <div class="col-sm-6 portfolio-item">
+            <a class="portfolio-link" href="#portfolioModal4" data-toggle="modal">
               <div class="caption">
                 <div class="caption-content">
                   <i class="fa fa-search-plus fa-3x"></i>
@@ -482,6 +494,63 @@
             <div class="row">
               <div class="col-lg-8 mx-auto">
                 <div class="modal-body">
+                  <h2>Top Chef Website</h2>
+                  <hr class="star-primary">
+                  <img class="img-fluid img-centered" src="img/portfolio/top-chef_screenshot.png" alt="">
+                  <p>
+                    Le but de ce site web est de trouver tous les <strong>restaurants étoilés Michelin</strong> qui offrent des <strong>promotions</strong> (en France).
+                    <br>
+                    <i>"Eat well and cheaper than usually".</i>
+                    <br><br>
+                    Pour cela, j'ai "scrapé" le site web Michelin pour récupérer une liste de tous les restaurants étoilés en France (en utilisant Node.js et le module cheerio).
+                    <br>
+                    Ensuite, j'ai cherché ces restaurants sur <i>lafourchette.com</i> en utilisant leur nom et leur adresse, afin d'être sûr qu'il s'agissait bien du même restaurant. Enfin, j'ai retourné une nouvelle liste de restaurants avec toutes les promotions existantes.
+                    <br><br>
+                    Pour la partie "front", j'ai utilisé React sur mon site web pour afficher les restaurants et les promotions.
+                    <br>
+                    L'utilisateur peut filtrer les restaurants en indiquant le nombre d'étoiles Michelin.
+                  </p>
+                  <ul class="list-inline item-details">
+                    <li>Date:
+                      <strong>
+                        Février 2018
+                      </strong>
+                    </li>
+                    <br>
+                    <li>
+                      <strong>
+                        <a href="https://guillaumefrd.github.io/top-chef/top-chef-app/build/" target="_blank">Découvrez le site ici</a>
+                      </strong>
+                    </li>
+                    <br>
+                    <li>
+                      <strong>
+                        <a href="https://github.com/guillaumefrd/top-chef" target="_blank">GitHub repository</a>
+                      </strong>
+                    </li>
+                  </ul>
+                  <button class="btn btn-success" type="button" data-dismiss="modal">
+                    <i class="fa fa-times"></i>
+                    Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="close-modal" data-dismiss="modal">
+            <div class="lr">
+              <div class="rl"></div>
+            </div>
+          </div>
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-8 mx-auto">
+                <div class="modal-body">
                   <h2>Bitcoin website</h2>
                   <hr class="star-primary">
                   <img class="img-fluid img-centered" src="img/portfolio/bitcoin.png" alt="">
@@ -512,7 +581,7 @@
         </div>
       </div>
     </div>
-    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="portfolio-modal modal fade" id="portfolioModal4" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="close-modal" data-dismiss="modal">
@@ -551,6 +620,8 @@
         </div>
       </div>
     </div>
+
+    <!-- Interest -->
     <div class="portfolio-modal modal fade" id="travel" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
