@@ -207,7 +207,15 @@ header.masthead {
     text-transform: uppercase; }
   header.masthead .intro-text .skills {
     font-size: 1.25em;
-    font-weight: 500; }
+    font-weight: 500;
+    }
+
+#intro {
+  background-color: #2C3E50;
+  padding: 8px;
+  width: 50%;
+  margin: auto;
+}
 
 @media (min-width: 768px) {
   header.masthead {
@@ -687,6 +695,6 @@ footer {
 }
 
 #coord {
-  margin-top: 3em;  
+  margin-top: 3em;
   text-align: center;
 }
