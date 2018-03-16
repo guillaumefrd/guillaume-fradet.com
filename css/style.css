@@ -331,7 +331,9 @@ header.masthead {
     .portfolio-modal .modal-dialog .modal-content img {
       margin-bottom: 30px; }
     .portfolio-modal .modal-dialog .modal-content .item-details {
-      margin: 30px 0; }
+      margin: 30px 0}
+    .portfolio-modal .modal-dialog .modal-content .item-details li {
+        margin-top: 10px;}
 
 .portfolio-modal .close-modal {
   position: absolute;
