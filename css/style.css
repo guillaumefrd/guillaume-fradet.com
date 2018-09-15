@@ -700,3 +700,8 @@ footer {
   margin-top: 3em;
   text-align: center;
 }
+
+#experience a {
+  color: white;
+  font-weight: bold;
+}
