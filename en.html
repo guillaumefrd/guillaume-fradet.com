@@ -21,9 +21,11 @@
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Dosis" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/cards.css" rel="stylesheet">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109327416-1"></script>
@@ -113,10 +115,8 @@
                     <p class="text-muted">
                       Classes followed during 1st semester:
                       <ul class="text-muted">
-                        <li>Advanced topics in Machine Learning</li>
-                        <li>Advanced Learning for Text and Graph Data (NLP)</li>
-                        <li>Reinforcement learning</li>
                         <li>Optimization for Data science</li>
+                        <li>Reinforcement learning</li>
                         <li>Introduction to Graphical Models</li>
                         <li>Big Data Framework (Hadoop, Spark, ES)</li>
                         <li>Systems for Big Data Analytics</li>
@@ -129,11 +129,12 @@
                       Classes followed during 2nd semester:
                       <ul class="text-muted">
                         <li>Deep Learning</li>
+                        <li>Advanced Learning for Text and Graph Data (NLP)</li>
                         <li>Data Stream Processing</li>
                         <li>Machine Learning, Business case</li>
                         <li>Big data & insurance</li>
                         <li>Data infrastructure (NoSQL)</li>
-                        <li>Modèles à effets mixtes et approches de population en sciences de la vie</li>
+                        <li>Mixed Effects Models for the Population Approach</li>
                       </ul>
                     </p>
                 </div>
@@ -326,7 +327,7 @@
                     <h4 class="subheading">Operator - Parc Astérix, Plailly (60)</h4>
                   </div>
                   <div class="timeline-body">
-                    <p>Summer Job in an amusemant park.</p>
+                    <p>Summer Job in an amusement park.</p>
                   </div>
                 </div>
               </li>
@@ -344,68 +345,191 @@
     <section id="portfolio">
       <div class="container">
         <h2 class="text-center">Portfolio</h2>
-        <hr class="star-primary">
+        <hr class="star-grey">
         <br>
-        <div class="row">
-          <div class="col-sm-4 portfolio-item">
-            <a class="portfolio-link" href="#portfolioModalCDR" data-toggle="modal">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/robot.png" alt="robot">
-            </a>
+        <!-- Mars Craters -->
+        <div class="blog-card">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/mars_craters_detection.png)"></div>
+            <ul class="details">
+              <li class="author">Guillaume Fradet</li>
+              <li class="date">December 2018</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="#">GitHub</a></li>
+                </ul>
+              </li>
+            </ul>
           </div>
-          <div class="col-sm-4 portfolio-item">
-            <a class="portfolio-link" href="#portfolioModalTopChef" data-toggle="modal">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/top-chef.png" alt="top-chef">
-            </a>
+          <div class="description">
+            <h1>Computer Vision: Mars craters</h1>
+            <h2>Object detection / segmentation</h2>
+          <p>Application of object detection / segmentation (MaskRCNN and RetinaNet) on Mars satellite images. The goal was to detect automatically craters.</p>
+            <p class="read-more">
+              <a href="#">Read More</a>
+            </p>
           </div>
-          <div class="col-sm-4 portfolio-item">
-            <a class="portfolio-link" href="#portfolioModalAPI" data-toggle="modal">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/api.png" alt="api">
-            </a>
+        </div>
+        <!-- Reinforcement learning -->
+        <div class="blog-card alt">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/reinforcement_learning_gym.png)"></div>
+            <ul class="details">
+              <li class="author"><a href="https://www.linkedin.com/in/comecothenet/">Côme Cothenet</a>, <a href="https://www.linkedin.com/in/kathrynschutte/">Kathryn Schutte</a>, Guillaume Fradet</li>
+              <li class="date">February 2019</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="#">GitHub</a></li>
+                </ul>
+              </li>
+            </ul>
           </div>
-          <div class="col-sm-4 portfolio-item">
-            <a class="portfolio-link" href="#portfolioModalAndroid" data-toggle="modal">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/android.png" alt="android">
-            </a>
+          <div class="description">
+            <h1>Reinforcement Learning</h1>
+            <h2>Q-Learning implementation</h2>
+            <p>Implementation of the reinforcement learning technique Q-Learning. The environment was MountainCar (OpenAI Gym), where the goal is to teach a car to swing from left to right so that it can climb the mountain.</p>
+            <p class="read-more">
+              <a href="#">Read More</a>
+            </p>
           </div>
-          <div class="col-sm-4 portfolio-item">
-            <a class="portfolio-link" href="#portfolioModalBitcoin" data-toggle="modal">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/bitcoin.png" alt="bitcoin">
-            </a>
+        </div>
+        <!-- VAST Challenge -->
+        <div class="blog-card">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/data_viz_challenge.jpg)"></div>
+            <ul class="details">
+              <li class="author"><a href="https://www.linkedin.com/in/nicolas-toussaint/">Nicolas Toussaint</a>, <a href="https://www.linkedin.com/in/sajeevan-p-807867129/">Sajeevan Puvikaran</a>, <a href="https://www.linkedin.com/in/ruth-kueviakoe-668868140/">Ruth Kueviakoe</a>, Guillaume Fradet</li>
+              <li class="date">Oct-Dec. 2018</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://github.com/guillaumefrd/vast-challenge-2018-mc1">GitHub</a></li>
+                </ul>
+              </li>
+            </ul>
           </div>
-          <div class="col-sm-4 portfolio-item">
-            <a class="portfolio-link" href="#portfolioModalEolic" data-toggle="modal">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/eolic.png" alt="eolic">
-            </a>
+          <div class="description">
+            <h1>Data viz: VAST Challenge</h1>
+            <h2>Visualization and Machine Learning</h2>
+            <p>Development of various visualization to respond to the VAST mini-challenge 1 of 2018. The goal was to discover if the actions of a company had led to the migration of birds. Spatio-temporal data analysis led to the development of an interactive map to observe the movements of different species. Spectral analysis of bird songs has also revealed interesting facts.</p>
+            <p class="read-more">
+              <a href="https://github.com/guillaumefrd/vast-challenge-2018-mc1">Read More</a>
+            </p>
+          </div>
+        </div>
+        <!-- A.S.T.R. -->
+        <div class="blog-card alt">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/robot_pepper.jpg)"></div>
+            <ul class="details">
+              <li class="author"><a href="https://www.linkedin.com/in/romaintaprest/">Romain Taprest</a>, Guillaume Fradet</li>
+              <li class="date">April-Sept. 2018</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://github.com/aldebaran/astr">web-app</a></li>
+                  <li><a href="https://github.com/aldebaran/lib-python-astr">python-lib</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1>A.S.T.R. - Archiving System Truly RESTful</h1>
+            <h2>Development of an Open Source web application - SoftBank Robotics</h2>
+            <p>Development of an Open Source archiving system allowing the storage of any type of data. The users can interact with web-based system through the website or directly from scripts (using the developed Python library). Originally, the application was designed and developed within SoftBank Robotics to store tests performed on NAO and Pepper robots.</p>
+            <p class="read-more">
+              <a href="#">Read More</a>
+            </p>
+          </div>
+        </div>
+        <!-- Coupe de France de Robotique  -->
+        <div class="blog-card">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/coupe_france_robotique.jpg)"></div>
+            <ul class="details">
+              <li class="author"><a href="http://davincibot.org/">DaVinciBot</a>, Guillaume Fradet</li>
+              <li class="date">2016-2017</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://www.esilv.fr/coupe-de-france-de-robotique-2017-davinci-bot-top-50/">article</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1>French Cup of Robotics</h1>
+            <h2>2016 and 2017 editions</h2>
+            <p>Participation in two editions of the French Robotics Cup with DaVinciBot, association of the Pôle Universitaire Léonard de Vinci.</p>
+            <p class="read-more">
+              <a href="#portfolioModalCDR" data-toggle="modal">Read More</a>
+            </p>
+          </div>
+        </div>
+        <!-- Top chef app -->
+        <div class="blog-card alt">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/top-chef_screenshot.png)"></div>
+            <ul class="details">
+              <li class="author">Guillaume Fradet</li>
+              <li class="date">February 2018</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://github.com/guillaumefrd/top-chef-react-scrapping">GitHub</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1>Top Chef</h1>
+            <h2>Scrapping & React.js web application</h2>
+            <p>A web application that makes it easy to find all Michelin starred restaurants that currently offer promotions in France.</p>
+            <p class="read-more">
+              <a href="#portfolioModalTopChef" data-toggle="modal">Read More</a>
+            </p>
+          </div>
+        </div>
+        <!-- MongoDB UI -->
+        <div class="blog-card">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/api_screenshot.png)"></div>
+            <ul class="details">
+              <li class="author"><a href="https://www.linkedin.com/in/matthiasexbrayat/">Matthias Exbrayat</a>, Guillaume Fradet</li>
+              <li class="date">March 2018</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://github.com/guillaumefrd/mongodb-interface">GitHub</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1>MongoDB User Interface & API</h1>
+            <h2>NoSQL Databases</h2>
+            <p>Web application to easily explore a MongoDB database, containing the 5000 best selling movies on Amazon.</p>
+            <p class="read-more">
+              <a href="#portfolioModalAPI" data-toggle="modal">Read More</a>
+            </p>
+          </div>
+        </div>
+        <!-- Android app -->
+        <div class="blog-card alt">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/android_screenshot.png)"></div>
+            <ul class="details">
+              <li class="author">Guillaume Fradet</li>
+              <li class="date">March 2018</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://github.com/guillaumefrd/youtube-android-app">GitHub</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1>YouTube 0.1</h1>
+            <h2>Development of an Android application</h2>
+            <p>The goal of this project was to develop an Android application similar to Youtube, using their API.</p>
+            <p class="read-more">
+              <a href="#portfolioModalAndroid" data-toggle="modal">Read More</a>
+            </p>
           </div>
         </div>
       </div>
@@ -422,7 +546,7 @@
               <br>
               <h3>Programming <i class="fa fa-laptop"></i></h3>
     					<li data-skills="92">Web development (HTML, CSS, JavaScript, Node.js, SQL, NoSQL)<span style="width: 92%;"></span></li>
-              <li data-skills="90">Python<span style="width: 90%;"></span></li>
+              <li data-skills="92">Python<span style="width: 92%;"></span></li>
               <li data-skills="80">C# / Java<span style="width: 80%;"></span></li>
               <li data-skills="75">Arduino<span style="width: 75%;"></span></li>
               <li data-skills="60">C<span style="width: 60%;"></span></li>
@@ -433,6 +557,7 @@
               <br>
               <h3>Software / Tools <i class="fa fa-wrench fa-5x" width="100px"></i></h3>
               <li data-skills="80">Git<span style="width: 80%;"></span></li>
+              <li data-skills="85">LaTeX<span style="width: 85%;"></span></li>
               <li data-skills="80">RStudio<span style="width: 80%;"></span></li>
               <li data-skills="80">Android Studio<span style="width: 80%;"></span></li>
               <li data-skills="70">SolidWorks<span style="width: 70%;"></span></li>

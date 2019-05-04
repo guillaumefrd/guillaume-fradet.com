@@ -22,9 +22,11 @@
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa|Dosis" rel="stylesheet">
 
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/cards.css" rel="stylesheet">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109327416-1"></script>
@@ -116,10 +118,8 @@
                     <p class="text-muted">
                       Cours suivi au 1er semestre:
                       <ul class="text-muted">
-                        <li>Advanced topics in Machine Learning</li>
-                        <li>Advanced Learning for Text and Graph Data (NLP)</li>
-                        <li>Reinforcement learning</li>
                         <li>Optimization for Data science</li>
+                        <li>Reinforcement learning</li>
                         <li>Introduction to Graphical Models</li>
                         <li>Big Data Framework (Hadoop, Spark, ES)</li>
                         <li>Systems for Big Data Analytics</li>
@@ -132,6 +132,7 @@
                       Cours suivi au 2ème semestre:
                       <ul class="text-muted">
                         <li>Deep Learning</li>
+                        <li>Advanced Learning for Text and Graph Data (NLP)</li>
                         <li>Data Stream Processing</li>
                         <li>Machine Learning, Business case</li>
                         <li>Big data & assurance</li>
@@ -355,68 +356,191 @@
     <section id="portfolio">
       <div class="container">
         <h2 class="text-center">Portfolio</h2>
-        <hr class="star-primary">
+        <hr class="star-grey">
         <br>
-        <div class="row">
-          <div class="col-sm-4 portfolio-item">
-            <a class="portfolio-link" href="#portfolioModalCDR" data-toggle="modal">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/robot.png" alt="robot">
-            </a>
+        <!-- Mars Craters -->
+        <div class="blog-card">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/mars_craters_detection.png)"></div>
+            <ul class="details">
+              <li class="author">Guillaume Fradet</li>
+              <li class="date">Décembre 2018</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="#">GitHub</a></li>
+                </ul>
+              </li>
+            </ul>
           </div>
-          <div class="col-sm-4 portfolio-item">
-            <a class="portfolio-link" href="#portfolioModalTopChef" data-toggle="modal">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/top-chef.png" alt="top-chef">
-            </a>
+          <div class="description">
+            <h1>Computer Vision: Mars craters</h1>
+            <h2>Object detection / segmentation</h2>
+          <p>Application de techniques de détection / segmentation d'objets (MaskRCNN et RetinaNet) sur des images satellite de Mars, afin de d'identifier automatiquement les cratères.</p>
+            <p class="read-more">
+              <a href="#">Read More</a>
+            </p>
           </div>
-          <div class="col-sm-4 portfolio-item">
-            <a class="portfolio-link" href="#portfolioModalAPI" data-toggle="modal">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/api.png" alt="api">
-            </a>
+        </div>
+        <!-- Reinforcement learning -->
+        <div class="blog-card alt">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/reinforcement_learning_gym.png)"></div>
+            <ul class="details">
+              <li class="author"><a href="https://www.linkedin.com/in/comecothenet/">Côme Cothenet</a>, <a href="https://www.linkedin.com/in/kathrynschutte/">Kathryn Schutte</a>, Guillaume Fradet</li>
+              <li class="date">Février 2019</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="#">GitHub</a></li>
+                </ul>
+              </li>
+            </ul>
           </div>
-          <div class="col-sm-4 portfolio-item">
-            <a class="portfolio-link" href="#portfolioModalAndroid" data-toggle="modal">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/android.png" alt="android">
-            </a>
+          <div class="description">
+            <h1>Reinforcement Learning</h1>
+            <h2>Implémentation du Q-Learning</h2>
+            <p>Apprentissage par renforcement suivant la technique du Q-learning. L'environnement est celui de MountainCar (OpenAI Gym), où il faut apprendre à une voiture à se balancer de gauche à droite afin de pouvoir gravir la montagne.</p>
+            <p class="read-more">
+              <a href="#">Read More</a>
+            </p>
           </div>
-          <div class="col-sm-4 portfolio-item">
-            <a class="portfolio-link" href="#portfolioModalBitcoin" data-toggle="modal">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/bitcoin.png" alt="bitcoin">
-            </a>
+        </div>
+        <!-- VAST Challenge -->
+        <div class="blog-card">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/data_viz_challenge.jpg)"></div>
+            <ul class="details">
+              <li class="author"><a href="https://www.linkedin.com/in/nicolas-toussaint/">Nicolas Toussaint</a>, <a href="https://www.linkedin.com/in/sajeevan-p-807867129/">Sajeevan Puvikaran</a>, <a href="https://www.linkedin.com/in/ruth-kueviakoe-668868140/">Ruth Kueviakoe</a>, Guillaume Fradet</li>
+              <li class="date">Oct-Déc. 2018</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://github.com/guillaumefrd/vast-challenge-2018-mc1">GitHub</a></li>
+                </ul>
+              </li>
+            </ul>
           </div>
-          <div class="col-sm-4 portfolio-item">
-            <a class="portfolio-link" href="#portfolioModalEolic" data-toggle="modal">
-              <div class="caption">
-                <div class="caption-content">
-                  <i class="fa fa-search-plus fa-3x"></i>
-                </div>
-              </div>
-              <img class="img-fluid" src="img/portfolio/eolic.png" alt="éolienne">
-            </a>
+          <div class="description">
+            <h1>Data viz: VAST Challenge</h1>
+            <h2>Visualisation et Machine Learning</h2>
+            <p>Développement de diverses visualisations afin de répondre au VAST mini-challenge 1 de 2018. Le but était de découvrir si les actions d'une entreprise avaient menées à la migration d'oiseaux. L'analyse des données spatio-temporelle a conduit à l'élaboration d'une carte interactive permettant d'observer les mouvements des différentes espèces. Une analyse spectrale sur les chants des oiseaux à également permis de découvrir des faits intéressants.</p>
+            <p class="read-more">
+              <a href="https://github.com/guillaumefrd/vast-challenge-2018-mc1">Read More</a>
+            </p>
+          </div>
+        </div>
+        <!-- A.S.T.R. -->
+        <div class="blog-card alt">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/robot_pepper.jpg)"></div>
+            <ul class="details">
+              <li class="author"><a href="https://www.linkedin.com/in/romaintaprest/">Romain Taprest</a>, Guillaume Fradet</li>
+              <li class="date">Avril-Sept. 2018</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://github.com/aldebaran/astr">web-app</a></li>
+                  <li><a href="https://github.com/aldebaran/lib-python-astr">python-lib</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1>A.S.T.R. - Archiving System Truly RESTful</h1>
+            <h2>Développement d'une application web Open Source - SoftBank Robotics</h2>
+            <p>Développement d'un système d'archivage Open Source permettant le stockage de tout type de données. Système basé sur une application web, dont l'interaction est possible grâce au site web ou directement à partir de scripts (à l'aide de la librairie Python développée). A l'origine, l'application a été pensée et développée au sein de SoftBank Robotics pour stocker des tests effectués sur les robots NAO et Pepper.</p>
+            <p class="read-more">
+              <a href="#">Read More</a>
+            </p>
+          </div>
+        </div>
+        <!-- Coupe de France de Robotique  -->
+        <div class="blog-card">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/coupe_france_robotique.jpg)"></div>
+            <ul class="details">
+              <li class="author"><a href="http://davincibot.org/">DaVinciBot</a>, Guillaume Fradet</li>
+              <li class="date">2016-2017</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://www.esilv.fr/coupe-de-france-de-robotique-2017-davinci-bot-top-50/">article</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1>Coupe de France de Robotique</h1>
+            <h2>éditions 2016 et 2017</h2>
+            <p>Participation à deux éditions de la Coupe de France de Robotique avec l'association DaVinciBot du Pôle Universitaire Léonard de Vinci.</p>
+            <p class="read-more">
+              <a href="#portfolioModalCDR" data-toggle="modal">Read More</a>
+            </p>
+          </div>
+        </div>
+        <!-- Top chef app -->
+        <div class="blog-card alt">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/top-chef_screenshot.png)"></div>
+            <ul class="details">
+              <li class="author">Guillaume Fradet</li>
+              <li class="date">Février 2018</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://github.com/guillaumefrd/top-chef-react-scrapping">GitHub</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1>Top Chef</h1>
+            <h2>Scrapping & application web en React.js</h2>
+            <p>Une application web qui permet de trouver facilement tous les restaurants étoilés Michelin qui offrent actuellement des promotions en France.</p>
+            <p class="read-more">
+              <a href="#portfolioModalTopChef" data-toggle="modal">Read More</a>
+            </p>
+          </div>
+        </div>
+        <!-- MongoDB UI -->
+        <div class="blog-card">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/api_screenshot.png)"></div>
+            <ul class="details">
+              <li class="author"><a href="https://www.linkedin.com/in/matthiasexbrayat/">Matthias Exbrayat</a>, Guillaume Fradet</li>
+              <li class="date">Mars 2018</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://github.com/guillaumefrd/mongodb-interface">GitHub</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1>Interface utilisateur MongoDB & API</h1>
+            <h2>NoSQL Databases</h2>
+            <p>Application web permettant d'explorer facilement une base de données MongoDB, contenant les 5000 films les plus vendus sur Amazon.</p>
+            <p class="read-more">
+              <a href="#portfolioModalAPI" data-toggle="modal">Read More</a>
+            </p>
+          </div>
+        </div>
+        <!-- Android app -->
+        <div class="blog-card alt">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/android_screenshot.png)"></div>
+            <ul class="details">
+              <li class="author">Guillaume Fradet</li>
+              <li class="date">Mars 2018</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://github.com/guillaumefrd/youtube-android-app">GitHub</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1>YouTube 0.1</h1>
+            <h2>Développement d'une application Android</h2>
+            <p>Le but de ce projet était de développer une application Android similaire à Youtube, en utilisant leur API.</p>
+            <p class="read-more">
+              <a href="#portfolioModalAndroid" data-toggle="modal">Read More</a>
+            </p>
           </div>
         </div>
       </div>
@@ -433,7 +557,7 @@
               <br>
               <h3>Programmation <i class="fa fa-laptop"></i></h3>
     					<li data-skills="92">Web development (HTML, CSS, JavaScript, Node.js, SQL, NoSQL)<span style="width: 92%;"></span></li>
-              <li data-skills="90">Python<span style="width: 90%;"></span></li>
+              <li data-skills="92">Python<span style="width: 92%;"></span></li>
               <li data-skills="80">C# / Java<span style="width: 80%;"></span></li>
               <li data-skills="75">Arduino<span style="width: 75%;"></span></li>
               <li data-skills="60">C<span style="width: 60%;"></span></li>
@@ -444,6 +568,7 @@
               <br>
               <h3>Outils / Logiciels <i class="fa fa-wrench fa-5x" width="100px"></i></h3>
               <li data-skills="80">Git<span style="width: 80%;"></span></li>
+              <li data-skills="85">LaTeX<span style="width: 85%;"></span></li>
               <li data-skills="80">RStudio<span style="width: 80%;"></span></li>
               <li data-skills="80">Android Studio<span style="width: 80%;"></span></li>
               <li data-skills="70">SolidWorks<span style="width: 70%;"></span></li>
@@ -670,47 +795,6 @@
         </div>
       </div>
     </div>
-    <div class="portfolio-modal modal fade" id="portfolioModalBitcoin" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="modal-body">
-                  <h2>Bitcoin website</h2>
-                  <hr class="star-primary">
-                  <img class="img-fluid img-centered" src="img/portfolio/bitcoin_screenshot.png" alt="screenshot-app-bitcoin">
-                  <p>Pour un projet en ingénierie financière, j'ai développé un site web où on retrouve différentes informations en
-                    temps réel à propos du bitcoin. On peut également chercher des informations dans la blockchain en indiquant
-                      l'adresse d'une transaction, le hash d'une transaction, le hash d'un block ou l'index d'un block.
-                  </p>
-                  <ul class="list-inline item-details">
-                    <li>Date:
-                      <strong>
-                        Avril 2017
-                      </strong>
-                    </li>
-                    <li>
-                      <strong>
-                        <a href="projects/btc/index.html" target="_blank">Découvrez le site ici</a>
-                      </strong>
-                    </li>
-                  </ul>
-                  <button class="btn btn-success" type="button" data-dismiss="modal">
-                    <i class="fa fa-times"></i>
-                    Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <div class="portfolio-modal modal fade" id="portfolioModalAndroid" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -756,45 +840,6 @@
                     <li>
                       <strong>
                         <a href="https://github.com/guillaumefrd/youtube-android-app" target="_blank">GitHub repository</a>
-                      </strong>
-                    </li>
-                  </ul>
-                  <button class="btn btn-success" type="button" data-dismiss="modal">
-                    <i class="fa fa-times"></i>
-                    Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="portfolio-modal modal fade" id="portfolioModalEolic" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="close-modal" data-dismiss="modal">
-            <div class="lr">
-              <div class="rl"></div>
-            </div>
-          </div>
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 mx-auto">
-                <div class="modal-body">
-                  <h2>Construction d'une éolienne urbaine</h2>
-                  <hr class="star-primary">
-                  <iframe width="100%" height="350" src="https://www.youtube.com/embed/Sk5yjHVh2Mc" frameborder="0" allowfullscreen></iframe>
-                  <p><br>En première année de prépa intégrée, nous avons dû concevoir une petite éolienne urbaine suivant un cahier des charges bien précis.
-                    <br>
-                    Contraintes principales : hauteur limite du mât de 50cm, fabriqué en matériaux recyclés, silencieux, montage
-                    et démontage en moins de 10 minutes, sortie pour la mesure. Equipe de 6 étudiants.
-                    <br>
-                    <a href="https://www.esilv.fr/formations/projets/projet-dimagination-et-dexploration-1/">Article de l'ESILV</a>
-                  </p>
-                  <ul class="list-inline item-details">
-                    <li>Date:
-                      <strong>
-                        2014-2015
                       </strong>
                     </li>
                   </ul>

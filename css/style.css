@@ -228,6 +228,10 @@ header.masthead {
     header.masthead .intro-text .bio {
       font-size: 1.75em; } }
 
+#portfolio {
+  background: #f2f2f2;
+}
+
 #portfolio .portfolio-item {
   right: 0;
   margin: 0 0 15px; }
