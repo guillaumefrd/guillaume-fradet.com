@@ -214,8 +214,8 @@ header.masthead {
 
 #intro {
   background-color: #2C3E50;
-  padding: 8px;
-  width: 20%;
+  padding: 10px;
+  width: fit-content;
   margin: auto;
 }
 
