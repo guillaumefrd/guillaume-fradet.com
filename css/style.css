@@ -316,6 +316,10 @@ header.masthead {
       #interest .portfolio-item {
         margin: 0 0 30px; } }
 
+div.col-sm-4.portfolio-item {
+  margin-top: 1em;
+}
+
 .portfolio-modal .modal-dialog {
   max-width: 100%;
   min-height: 100%;
@@ -666,8 +670,12 @@ footer {
   z-index: 1;
 }
 
-#skills ul {
-  list-style: none;
+.code-snippet {
+  display: block;
+}
+
+.code-snippet li {
+  margin-bottom: 0.5em;
 }
 
 #skillsbar {
