@@ -181,7 +181,10 @@ section.success {
     padding-top: 10px;
     padding-bottom: 10px; }
     #mainNav.navbar-shrink .navbar-brand {
-      font-size: 1.5em; } }
+      font-size: 1.5em; }
+  #intro2 {
+    max-width: 60%;
+  } }
 
 header.masthead {
   padding-top: 100px;
@@ -213,7 +216,14 @@ header.masthead {
     }
 
 #intro {
-  background-color: #2C3E50;
+  background-color: rgba(44, 62, 80, 0.8);;
+  padding: 10px;
+  width: fit-content;
+  margin: auto;
+}
+
+#intro2 {
+  background-color: rgba(44, 62, 80, 0.6);
   padding: 10px;
   width: fit-content;
   margin: auto;
@@ -452,6 +462,18 @@ footer {
     border: solid 2px white;
     background: white; }
 
+.btn-outline-color {
+  font-size: 20px;
+  margin-top: 15px;
+  transition: all 0.3s ease-in-out;
+  color: #2C3E50;
+  border: solid 2px white;
+  background: transparent; }
+  .btn-outline-color.active, .btn-outline-color:active, .btn-outline-color:focus, .btn-outline-color:hover {
+    color: white;
+    border: solid 2px #2C3E50;
+    background: #2C3E50; }
+
 .btn-primary {
   font-weight: 700;
   color: white;
@@ -536,6 +558,16 @@ footer {
   height: 50px;
   text-align: center;
   border: 2px solid white;
+  border-radius: 100%; }
+
+.btn-social-color {
+  font-size: 20px;
+  line-height: 45px;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  border: 2px solid #2C3E50;
   border-radius: 100%; }
 
 .btn.active,
@@ -718,4 +750,9 @@ footer {
 #experience a {
   color: white;
   font-weight: bold;
+}
+
+#link-section {
+  padding: 0px;
+  margin-top: 3em;
 }
