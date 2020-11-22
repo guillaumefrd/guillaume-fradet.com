@@ -73,15 +73,17 @@
       $(this).nextAll().show();
       $(this).removeClass('hidden');
 
-      // Show only the first 5 projects
-      $(this).nextAll('.blog-card').each(function(i) {
-        if (i < 5) {
-          $(this).show();
-        } else {
-          $(this).hide();
-        }
-      })
-      $('#show_more_projects').show();
+      if ($(this).parent().parent().attr('id') == 'portfolio') {
+        // Show only the first 5 projects
+        $(this).nextAll('.blog-card').each(function(i) {
+          if (i < 5) {
+            $(this).show();
+          } else {
+            $(this).hide();
+          }
+        });
+        $('#show_more_projects').show();
+      }
     }
   });
 
