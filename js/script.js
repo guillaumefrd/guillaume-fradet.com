@@ -50,8 +50,7 @@
   $('.blog-card').each(function(i) {
     if (i < 5) {
       $(this).show();
-    }
-    else {
+    } else {
       $(this).hide();
     }
   });
@@ -63,6 +62,27 @@
     });
     // Hide button
     $(this).hide();
+  });
+
+  // Hide or show the section if button is clicked
+  $('.hr-grey,.hr-light,.hr-primary').click(function() {
+    if ($(this).next().is(":visible")) {
+      $(this).nextAll().hide();
+      $(this).toggleClass('hidden');
+    } else {
+      $(this).nextAll().show();
+      $(this).removeClass('hidden');
+
+      // Show only the first 5 projects
+      $(this).nextAll('.blog-card').each(function(i) {
+        if (i < 5) {
+          $(this).show();
+        } else {
+          $(this).hide();
+        }
+      })
+      $('#show_more_projects').show();
+    }
   });
 
 })(jQuery); // End of use strict
