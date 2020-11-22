@@ -46,4 +46,23 @@
     });
   });
 
+  // Show only the first 5 projects by default
+  $('.blog-card').each(function(i) {
+    if (i < 5) {
+      $(this).show();
+    }
+    else {
+      $(this).hide();
+    }
+  });
+
+  // Show more project if button is clicked
+  $('#show_more_projects').click(function() {
+    $('.blog-card').each(function() {
+      $(this).show(400);
+    });
+    // Hide button
+    $(this).hide();
+  });
+
 })(jQuery); // End of use strict

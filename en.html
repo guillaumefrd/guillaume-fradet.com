@@ -55,13 +55,13 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#formation">Education</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#experience">Experience</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#skills">Skills</a>
@@ -97,6 +97,7 @@
       </div>
     </header>
 
+    <!-- Link Section -->
     <section id="link-section">
       <div class="container">
         <div class="row">
@@ -118,6 +119,297 @@
               </li>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Portfolio Grid Section -->
+    <section id="portfolio">
+      <div class="container">
+        <h2 class="text-center">Portfolio</h2>
+        <hr class="star-grey">
+        <br>
+        <!-- Domain adaption article -->
+        <div class="blog-card">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/domain_adaptation_article.png)"></div>
+            <ul class="details">
+              <li class="author">Guillaume Fradet</li>
+              <li class="date">Juin 2020</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://medium.com/azmed/domain-adaptation-la-cl%C3%A9-du-d%C3%A9ploiement-des-algorithmes-%C3%A0-grande-%C3%A9chelle-12e32a6d9a13">Medium article</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1>Domain Adaptation</h1>
+            <h2>The key to deploy algorithms on a large scale</h2>
+            <p>A powerful detection algorithm for one medical center, but unsuitable for another. This is one of the major problems faced by research teams wishing to deploy their models on a large scale. In this article, I introduce this challenge called Domain Adaptation in the context of medical imaging, based on my experience at AZmed.</p>
+            <p class="read-more">
+              <a href="https://medium.com/azmed/domain-adaptation-la-cl%C3%A9-du-d%C3%A9ploiement-des-algorithmes-%C3%A0-grande-%C3%A9chelle-12e32a6d9a13">Read More</a>
+            </p>
+          </div>
+        </div>
+        <!-- Radiomics -->
+        <div class="blog-card alt">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/radiomics.jpg)"></div>
+            <ul class="details">
+              <li class="author">Guillaume Fradet, <a href="https://www.linkedin.com/in/reina-ayde-79602b7a/">Reina Ayde</a> </li>
+              <li class="date">Apr-Sept. 2019</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://www.researchgate.net/publication/337632006_Radiomics_vs_Deep_Learning_to_predict_lipomatous_soft_tissue_tumors_malignancy_on_Magnetic_Resonance_Imaging_report">ResearchGate</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1>Predict lipomatous soft tissue tumors malignancy on MRI</h1>
+            <h2>Radiomics vs. Deep Learning</h2>
+            <p>
+              Research report comparing two main approaches - Radiomics and Deep Learning - to detect malignant soft tissue tumors directly on magnetic resonance imaging.
+            </p>
+            <p class="read-more">
+              <a href="docs/Radiomics_vs_Deep_Learning_to_predict_lipomatous_soft_tissue_tumors_malignancy_on_MRI_Guillaume_Fradet.pdf">Read More</a>
+            </p>
+          </div>
+        </div>
+        <!-- brain-tumor-mri-dataset  -->
+        <div class="blog-card">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/brain-tumor-mri-dataset.png)"></div>
+            <ul class="details">
+              <li class="author">Guillaume Fradet</li>
+              <li class="date">July 2019</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://github.com/guillaumefrd/brain-tumor-mri-dataset">GitHub</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1>MRI brain tumor dataset</h1>
+            <h2>Data downloading & loading</h2>
+            <p>Utilities to download (CLI) and load an MRI brain tumor dataset with Python, providing 2D slices, tumor masks and tumor classes.</p>
+            <p class="read-more">
+              <a href="https://github.com/guillaumefrd/brain-tumor-mri-dataset">Read More</a>
+            </p>
+          </div>
+        </div>
+        <!-- Mars Craters -->
+        <div class="blog-card alt">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/mars_craters_detection.jpg)"></div>
+            <ul class="details">
+              <li class="author">Guillaume Fradet</li>
+              <li class="date">December 2018</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://github.com/guillaumefrd/mars-craters-detection">GitHub</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1>Computer Vision: Mars craters</h1>
+            <h2>Object detection / segmentation</h2>
+          <p>Application of object detection / segmentation (MaskRCNN and RetinaNet) on Mars satellite images. The goal was to detect automatically craters.</p>
+            <p class="read-more">
+              <a href="https://github.com/guillaumefrd/mars-craters-detection">Read More</a>
+            </p>
+          </div>
+        </div>
+        <!-- Reinforcement learning -->
+        <div class="blog-card">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/reinforcement_learning_gym.png)"></div>
+            <ul class="details">
+              <li class="author"><a href="https://www.linkedin.com/in/comecothenet/">Côme Cothenet</a>, <a href="https://www.linkedin.com/in/kathrynschutte/">Kathryn Schutte</a>, Guillaume Fradet</li>
+              <li class="date">February 2019</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://github.com/guillaumefrd/q-learning-mountain-car">GitHub</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1>Reinforcement Learning</h1>
+            <h2>Q-Learning implementation</h2>
+            <p>Implementation of the reinforcement learning technique Q-Learning. The environment was MountainCar (OpenAI Gym), where the goal is to teach a car to swing from left to right so that it can climb the mountain.</p>
+            <p class="read-more">
+              <a href="https://github.com/guillaumefrd/q-learning-mountain-car">Read More</a>
+            </p>
+          </div>
+        </div>
+        <!-- VAST Challenge -->
+        <div class="blog-card alt">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/data_viz_challenge.jpg)"></div>
+            <ul class="details">
+              <li class="author"><a href="https://www.linkedin.com/in/nicolas-toussaint/">Nicolas Toussaint</a>, <a href="https://www.linkedin.com/in/sajeevan-p-807867129/">Sajeevan Puvikaran</a>, <a href="https://www.linkedin.com/in/ruth-kueviakoe-668868140/">Ruth Kueviakoe</a>, Guillaume Fradet</li>
+              <li class="date">Oct-Dec. 2018</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://github.com/guillaumefrd/vast-challenge-2018-mc1">GitHub</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1>Data viz: VAST Challenge</h1>
+            <h2>Visualization and Machine Learning</h2>
+            <p>Development of various visualizations to respond to the VAST mini-challenge 1 of 2018. The goal was to discover if the actions of a company had led to the migration of birds. Spatio-temporal data analysis led to the development of an interactive map to observe the movements of different species. Spectral analysis of bird songs has also revealed interesting facts.</p>
+            <p class="read-more">
+              <a href="https://github.com/guillaumefrd/vast-challenge-2018-mc1">Read More</a>
+            </p>
+          </div>
+        </div>
+        <!-- MAP on NMF -->
+        <div class="blog-card">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/map_nmf.jpg)"></div>
+            <ul class="details">
+              <li class="author">Guillaume Fradet</li>
+              <li class="date">Dec. 2018</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://github.com/guillaumefrd/map-estimation-on-NMF">GitHub</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1>MAP estimation on NMF</h1>
+            <h2>Graphical models</h2>
+            <p>Maximum a posteriori (MAP) estimation on NMF (non-negative matrix factorization), applied on faces.</p>
+            <p class="read-more">
+              <a href="https://github.com/guillaumefrd/map-estimation-on-NMF">Read More</a>
+            </p>
+          </div>
+        </div>
+        <!-- A.S.T.R. -->
+        <div class="blog-card alt">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/robot_pepper.jpg)"></div>
+            <ul class="details">
+              <li class="author"><a href="https://www.linkedin.com/in/romaintaprest/">Romain Taprest</a>, Guillaume Fradet</li>
+              <li class="date">April-Sept. 2018</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://github.com/aldebaran/astr">web-app</a></li>
+                  <li><a href="https://github.com/aldebaran/lib-python-astr">python-lib</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1>A.S.T.R. - Archiving System Truly RESTful</h1>
+            <h2>Development of an Open Source web application - SoftBank Robotics</h2>
+            <p>Development of an Open Source archiving system allowing the storage of any type of data. The users can interact with web-based system through the website or directly from scripts (using the developed Python library). Originally, the application was designed and developed within SoftBank Robotics to store tests performed on NAO and Pepper robots.</p>
+            <p class="read-more">
+              <a href="#">Read More</a>
+            </p>
+          </div>
+        </div>
+        <!-- Coupe de France de Robotique  -->
+        <div class="blog-card">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/coupe_france_robotique.jpg)"></div>
+            <ul class="details">
+              <li class="author"><a href="http://davincibot.org/">DaVinciBot</a>, Guillaume Fradet</li>
+              <li class="date">2016-2017</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://www.esilv.fr/coupe-de-france-de-robotique-2017-davinci-bot-top-50/">article</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1>French Cup of Robotics</h1>
+            <h2>2016 and 2017 editions</h2>
+            <p>Participation in two editions of the French Robotics Cup with DaVinciBot, association of the Pôle Universitaire Léonard de Vinci.</p>
+            <p class="read-more">
+              <a href="#portfolioModalCDR" data-toggle="modal">Read More</a>
+            </p>
+          </div>
+        </div>
+        <!-- Top chef app -->
+        <div class="blog-card alt">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/top-chef_screenshot.jpg)"></div>
+            <ul class="details">
+              <li class="author">Guillaume Fradet</li>
+              <li class="date">February 2018</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://github.com/guillaumefrd/top-chef-react-scrapping">GitHub</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1>Top Chef</h1>
+            <h2>Scrapping & React.js web application</h2>
+            <p>A web application that makes it easy to find all Michelin starred restaurants that currently offer promotions in France.</p>
+            <p class="read-more">
+              <a href="#portfolioModalTopChef" data-toggle="modal">Read More</a>
+            </p>
+          </div>
+        </div>
+        <!-- MongoDB UI -->
+        <div class="blog-card">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/api_screenshot.jpg)"></div>
+            <ul class="details">
+              <li class="author"><a href="https://www.linkedin.com/in/matthiasexbrayat/">Matthias Exbrayat</a>, Guillaume Fradet</li>
+              <li class="date">March 2018</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://github.com/guillaumefrd/mongodb-interface">GitHub</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1>MongoDB User Interface & API</h1>
+            <h2>NoSQL Databases</h2>
+            <p>Web application to easily explore a MongoDB database, containing the 5000 best selling movies on Amazon.</p>
+            <p class="read-more">
+              <a href="#portfolioModalAPI" data-toggle="modal">Read More</a>
+            </p>
+          </div>
+        </div>
+        <!-- Android app -->
+        <div class="blog-card alt">
+          <div class="meta">
+            <div class="photo" style="background-image: url(img/portfolio/android_screenshot.png)"></div>
+            <ul class="details">
+              <li class="author">Guillaume Fradet</li>
+              <li class="date">March 2018</li>
+              <li class="tags">
+                <ul>
+                  <li><a href="https://github.com/guillaumefrd/youtube-android-app">GitHub</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <div class="description">
+            <h1>YouTube 0.1</h1>
+            <h2>Development of an Android application</h2>
+            <p>The goal of this project was to develop an Android application similar to Youtube, using their API.</p>
+            <p class="read-more">
+              <a href="#portfolioModalAndroid" data-toggle="modal">Read More</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="center-button">
+        <button id="show_more_projects" type="button" class="btn btn-outline-primary">Show more</button>
       </div>
     </section>
 
@@ -412,294 +704,7 @@
       </div>
     </section>
 
-    <!-- Portfolio Grid Section -->
-    <section id="portfolio">
-      <div class="container">
-        <h2 class="text-center">Portfolio</h2>
-        <hr class="star-grey">
-        <br>
-        <!-- Domain adaption article -->
-        <div class="blog-card">
-          <div class="meta">
-            <div class="photo" style="background-image: url(img/portfolio/domain_adaptation_article.png)"></div>
-            <ul class="details">
-              <li class="author">Guillaume Fradet</li>
-              <li class="date">Juin 2020</li>
-              <li class="tags">
-                <ul>
-                  <li><a href="https://medium.com/azmed/domain-adaptation-la-cl%C3%A9-du-d%C3%A9ploiement-des-algorithmes-%C3%A0-grande-%C3%A9chelle-12e32a6d9a13">Medium article</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="description">
-            <h1>Domain Adaptation</h1>
-            <h2>The key to deploy algorithms on a large scale</h2>
-            <p>A powerful detection algorithm for one medical center, but unsuitable for another. This is one of the major problems faced by research teams wishing to deploy their models on a large scale. In this article, I introduce this challenge called Domain Adaptation in the context of medical imaging, based on my experience at AZmed.</p>
-            <p class="read-more">
-              <a href="https://medium.com/azmed/domain-adaptation-la-cl%C3%A9-du-d%C3%A9ploiement-des-algorithmes-%C3%A0-grande-%C3%A9chelle-12e32a6d9a13">Read More</a>
-            </p>
-          </div>
-        </div>
-        <!-- Radiomics -->
-        <div class="blog-card alt">
-          <div class="meta">
-            <div class="photo" style="background-image: url(img/portfolio/radiomics.jpg)"></div>
-            <ul class="details">
-              <li class="author">Guillaume Fradet, <a href="https://www.linkedin.com/in/reina-ayde-79602b7a/">Reina Ayde</a> </li>
-              <li class="date">Apr-Sept. 2019</li>
-              <li class="tags">
-                <ul>
-                  <li><a href="https://www.researchgate.net/publication/337632006_Radiomics_vs_Deep_Learning_to_predict_lipomatous_soft_tissue_tumors_malignancy_on_Magnetic_Resonance_Imaging_report">ResearchGate</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="description">
-            <h1>Predict lipomatous soft tissue tumors malignancy on MRI</h1>
-            <h2>Radiomics vs. Deep Learning</h2>
-            <p>
-              Research report comparing two main approaches - Radiomics and Deep Learning - to detect malignant soft tissue tumors directly on magnetic resonance imaging.
-            </p>
-            <p class="read-more">
-              <a href="docs/Radiomics_vs_Deep_Learning_to_predict_lipomatous_soft_tissue_tumors_malignancy_on_MRI_Guillaume_Fradet.pdf">Read More</a>
-            </p>
-          </div>
-        </div>
-        <!-- brain-tumor-mri-dataset  -->
-        <div class="blog-card">
-          <div class="meta">
-            <div class="photo" style="background-image: url(img/portfolio/brain-tumor-mri-dataset.png)"></div>
-            <ul class="details">
-              <li class="author">Guillaume Fradet</li>
-              <li class="date">July 2019</li>
-              <li class="tags">
-                <ul>
-                  <li><a href="https://github.com/guillaumefrd/brain-tumor-mri-dataset">GitHub</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="description">
-            <h1>MRI brain tumor dataset</h1>
-            <h2>Data downloading & loading</h2>
-            <p>Utilities to download (CLI) and load an MRI brain tumor dataset with Python, providing 2D slices, tumor masks and tumor classes.</p>
-            <p class="read-more">
-              <a href="https://github.com/guillaumefrd/brain-tumor-mri-dataset">Read More</a>
-            </p>
-          </div>
-        </div>
-        <!-- Mars Craters -->
-        <div class="blog-card alt">
-          <div class="meta">
-            <div class="photo" style="background-image: url(img/portfolio/mars_craters_detection.jpg)"></div>
-            <ul class="details">
-              <li class="author">Guillaume Fradet</li>
-              <li class="date">December 2018</li>
-              <li class="tags">
-                <ul>
-                  <li><a href="https://github.com/guillaumefrd/mars-craters-detection">GitHub</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="description">
-            <h1>Computer Vision: Mars craters</h1>
-            <h2>Object detection / segmentation</h2>
-          <p>Application of object detection / segmentation (MaskRCNN and RetinaNet) on Mars satellite images. The goal was to detect automatically craters.</p>
-            <p class="read-more">
-              <a href="https://github.com/guillaumefrd/mars-craters-detection">Read More</a>
-            </p>
-          </div>
-        </div>
-        <!-- Reinforcement learning -->
-        <div class="blog-card">
-          <div class="meta">
-            <div class="photo" style="background-image: url(img/portfolio/reinforcement_learning_gym.png)"></div>
-            <ul class="details">
-              <li class="author"><a href="https://www.linkedin.com/in/comecothenet/">Côme Cothenet</a>, <a href="https://www.linkedin.com/in/kathrynschutte/">Kathryn Schutte</a>, Guillaume Fradet</li>
-              <li class="date">February 2019</li>
-              <li class="tags">
-                <ul>
-                  <li><a href="https://github.com/guillaumefrd/q-learning-mountain-car">GitHub</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="description">
-            <h1>Reinforcement Learning</h1>
-            <h2>Q-Learning implementation</h2>
-            <p>Implementation of the reinforcement learning technique Q-Learning. The environment was MountainCar (OpenAI Gym), where the goal is to teach a car to swing from left to right so that it can climb the mountain.</p>
-            <p class="read-more">
-              <a href="https://github.com/guillaumefrd/q-learning-mountain-car">Read More</a>
-            </p>
-          </div>
-        </div>
-        <!-- VAST Challenge -->
-        <div class="blog-card alt">
-          <div class="meta">
-            <div class="photo" style="background-image: url(img/portfolio/data_viz_challenge.jpg)"></div>
-            <ul class="details">
-              <li class="author"><a href="https://www.linkedin.com/in/nicolas-toussaint/">Nicolas Toussaint</a>, <a href="https://www.linkedin.com/in/sajeevan-p-807867129/">Sajeevan Puvikaran</a>, <a href="https://www.linkedin.com/in/ruth-kueviakoe-668868140/">Ruth Kueviakoe</a>, Guillaume Fradet</li>
-              <li class="date">Oct-Dec. 2018</li>
-              <li class="tags">
-                <ul>
-                  <li><a href="https://github.com/guillaumefrd/vast-challenge-2018-mc1">GitHub</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="description">
-            <h1>Data viz: VAST Challenge</h1>
-            <h2>Visualization and Machine Learning</h2>
-            <p>Development of various visualizations to respond to the VAST mini-challenge 1 of 2018. The goal was to discover if the actions of a company had led to the migration of birds. Spatio-temporal data analysis led to the development of an interactive map to observe the movements of different species. Spectral analysis of bird songs has also revealed interesting facts.</p>
-            <p class="read-more">
-              <a href="https://github.com/guillaumefrd/vast-challenge-2018-mc1">Read More</a>
-            </p>
-          </div>
-        </div>
-        <!-- MAP on NMF -->
-        <div class="blog-card">
-          <div class="meta">
-            <div class="photo" style="background-image: url(img/portfolio/map_nmf.jpg)"></div>
-            <ul class="details">
-              <li class="author">Guillaume Fradet</li>
-              <li class="date">Dec. 2018</li>
-              <li class="tags">
-                <ul>
-                  <li><a href="https://github.com/guillaumefrd/map-estimation-on-NMF">GitHub</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="description">
-            <h1>MAP estimation on NMF</h1>
-            <h2>Graphical models</h2>
-            <p>Maximum a posteriori (MAP) estimation on NMF (non-negative matrix factorization), applied on faces.</p>
-            <p class="read-more">
-              <a href="https://github.com/guillaumefrd/map-estimation-on-NMF">Read More</a>
-            </p>
-          </div>
-        </div>
-        <!-- A.S.T.R. -->
-        <div class="blog-card alt">
-          <div class="meta">
-            <div class="photo" style="background-image: url(img/portfolio/robot_pepper.jpg)"></div>
-            <ul class="details">
-              <li class="author"><a href="https://www.linkedin.com/in/romaintaprest/">Romain Taprest</a>, Guillaume Fradet</li>
-              <li class="date">April-Sept. 2018</li>
-              <li class="tags">
-                <ul>
-                  <li><a href="https://github.com/aldebaran/astr">web-app</a></li>
-                  <li><a href="https://github.com/aldebaran/lib-python-astr">python-lib</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="description">
-            <h1>A.S.T.R. - Archiving System Truly RESTful</h1>
-            <h2>Development of an Open Source web application - SoftBank Robotics</h2>
-            <p>Development of an Open Source archiving system allowing the storage of any type of data. The users can interact with web-based system through the website or directly from scripts (using the developed Python library). Originally, the application was designed and developed within SoftBank Robotics to store tests performed on NAO and Pepper robots.</p>
-            <p class="read-more">
-              <a href="#">Read More</a>
-            </p>
-          </div>
-        </div>
-        <!-- Coupe de France de Robotique  -->
-        <div class="blog-card">
-          <div class="meta">
-            <div class="photo" style="background-image: url(img/portfolio/coupe_france_robotique.jpg)"></div>
-            <ul class="details">
-              <li class="author"><a href="http://davincibot.org/">DaVinciBot</a>, Guillaume Fradet</li>
-              <li class="date">2016-2017</li>
-              <li class="tags">
-                <ul>
-                  <li><a href="https://www.esilv.fr/coupe-de-france-de-robotique-2017-davinci-bot-top-50/">article</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="description">
-            <h1>French Cup of Robotics</h1>
-            <h2>2016 and 2017 editions</h2>
-            <p>Participation in two editions of the French Robotics Cup with DaVinciBot, association of the Pôle Universitaire Léonard de Vinci.</p>
-            <p class="read-more">
-              <a href="#portfolioModalCDR" data-toggle="modal">Read More</a>
-            </p>
-          </div>
-        </div>
-        <!-- Top chef app -->
-        <div class="blog-card alt">
-          <div class="meta">
-            <div class="photo" style="background-image: url(img/portfolio/top-chef_screenshot.jpg)"></div>
-            <ul class="details">
-              <li class="author">Guillaume Fradet</li>
-              <li class="date">February 2018</li>
-              <li class="tags">
-                <ul>
-                  <li><a href="https://github.com/guillaumefrd/top-chef-react-scrapping">GitHub</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="description">
-            <h1>Top Chef</h1>
-            <h2>Scrapping & React.js web application</h2>
-            <p>A web application that makes it easy to find all Michelin starred restaurants that currently offer promotions in France.</p>
-            <p class="read-more">
-              <a href="#portfolioModalTopChef" data-toggle="modal">Read More</a>
-            </p>
-          </div>
-        </div>
-        <!-- MongoDB UI -->
-        <div class="blog-card">
-          <div class="meta">
-            <div class="photo" style="background-image: url(img/portfolio/api_screenshot.jpg)"></div>
-            <ul class="details">
-              <li class="author"><a href="https://www.linkedin.com/in/matthiasexbrayat/">Matthias Exbrayat</a>, Guillaume Fradet</li>
-              <li class="date">March 2018</li>
-              <li class="tags">
-                <ul>
-                  <li><a href="https://github.com/guillaumefrd/mongodb-interface">GitHub</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="description">
-            <h1>MongoDB User Interface & API</h1>
-            <h2>NoSQL Databases</h2>
-            <p>Web application to easily explore a MongoDB database, containing the 5000 best selling movies on Amazon.</p>
-            <p class="read-more">
-              <a href="#portfolioModalAPI" data-toggle="modal">Read More</a>
-            </p>
-          </div>
-        </div>
-        <!-- Android app -->
-        <div class="blog-card alt">
-          <div class="meta">
-            <div class="photo" style="background-image: url(img/portfolio/android_screenshot.png)"></div>
-            <ul class="details">
-              <li class="author">Guillaume Fradet</li>
-              <li class="date">March 2018</li>
-              <li class="tags">
-                <ul>
-                  <li><a href="https://github.com/guillaumefrd/youtube-android-app">GitHub</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <div class="description">
-            <h1>YouTube 0.1</h1>
-            <h2>Development of an Android application</h2>
-            <p>The goal of this project was to develop an Android application similar to Youtube, using their API.</p>
-            <p class="read-more">
-              <a href="#portfolioModalAndroid" data-toggle="modal">Read More</a>
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
+    <!-- Skills Section -->
     <section class="success" id="skills">
       <div class="container">
         <h2 class="text-center">Skills</h2>
