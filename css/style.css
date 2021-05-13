@@ -687,6 +687,13 @@ footer {
   display: block;
 }
 
+code.code-snippet {
+  background-color: #f8f9fa;
+  border-radius: .25rem;
+  padding: .2rem .4rem;
+  color: #bd4147;
+}
+
 .code-snippet li {
   margin-bottom: 0.5em;
 }
