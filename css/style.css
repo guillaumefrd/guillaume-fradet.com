@@ -238,6 +238,7 @@ header.masthead {
   background-color: rgba(44, 62, 80, 0.8);;
   padding: 10px;
   width: fit-content;
+  width: -moz-fit-content;
   margin: auto;
 }
 
@@ -245,6 +246,7 @@ header.masthead {
   background-color: rgba(44, 62, 80, 0.6);
   padding: 10px;
   width: fit-content;
+  width: -moz-fit-content;
   margin: auto;
 }
 
@@ -696,6 +698,10 @@ code.code-snippet {
 
 .code-snippet li {
   margin-bottom: 0.5em;
+}
+
+.code-snippet ul {
+  padding-left: 1em;
 }
 
 #skillsbar {
