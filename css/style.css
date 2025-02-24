@@ -37,8 +37,7 @@ h6 {
 
 
 #profileImg {
-  height: 255px;
-  width: 255px;
+  width: 50%;
 }
 
 #linkedin {
@@ -208,46 +207,21 @@ section.success {
 header.masthead {
   padding-top: 100px;
   padding-bottom: 50px;
-  text-align: center;
-  color: white;
-  background-image: url("../img/header-bg.jpg");
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-position: center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover; }
-  header.masthead img {
-    display: block;
-    margin: 0 auto 20px; }
-  header.masthead .intro-text .name {
-    font-family: 'Montserrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    font-size: 2em;
-    font-weight: 700;
-    display: block;
-    text-transform: uppercase; }
-  header.masthead .intro-text .bio {
-    font-size: 1.25em;
-    font-weight: 500;
-    text-transform: none;
-    font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    }
-
-#intro {
-  background-color: rgba(44, 62, 80, 0.8);;
-  padding: 10px;
-  width: fit-content;
-  width: -moz-fit-content;
-  margin: auto;
+  background-size: cover;
+  text-transform: none;
 }
-
-#intro2 {
-  background-color: rgba(44, 62, 80, 0.6);
-  padding: 10px;
-  width: fit-content;
-  width: -moz-fit-content;
-  margin: auto;
+header.masthead img {
+  display: block;
+  margin: 0 auto 20px;
+}
+header.masthead h1 {
+  text-transform: none;
 }
 
 @media (min-width: 768px) {
