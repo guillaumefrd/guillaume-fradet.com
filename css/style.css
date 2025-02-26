@@ -699,28 +699,6 @@ code.code-snippet {
   margin-bottom: 2em;
 }
 
-#languages {
-  overflow: hidden;
-  background: #333;
-  position: fixed;
-  z-index: 3;
-  padding: 10px;
-  bottom: 0;
-  right: 60px;
-  width: 100px;
-  height: 50px;
-}
-
-#fr {
-  margin-right: 10px;
-  width: 32px;
-}
-
-#en {
-  width: 32px;
-}
-
-
 #experience {
   background: #f8f8f8;
 }
