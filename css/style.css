@@ -663,6 +663,9 @@ footer {
   .timeline .timeline-body > ul,
   .timeline .timeline-body > p {
     margin-bottom: 0; }
+  .timeline .timeline-body ul {
+    padding-left: 0.5em;
+  }
 
 #maps {
   margin-top: 1em;
