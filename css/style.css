@@ -46,6 +46,18 @@ h2 {
   font-size: 1.5em !important;
 }
 
+h3 {
+  font-size: 1.2em !important;
+}
+
+h4 {
+  font-size: 1em !important;
+}
+
+h5 {
+  font-size: 0.8em !important;
+}
+
 #profileImg {
   width: 50%;
 }
@@ -635,10 +647,6 @@ footer {
       border: 7px solid #e9ecef;
       border-radius: 100%;
       background-color: #fff; }
-      .timeline > li .timeline-image h4 {
-        font-size: 10px;
-        line-height: 14px;
-        margin-top: 12px; }
     .timeline > li.timeline-inverted > .timeline-panel {
       float: right;
       padding: 0 20px 0 100px;
@@ -654,15 +662,18 @@ footer {
         border-right-width: 14px;
         border-left-width: 0; }
     .timeline > li:last-child {
-      margin-bottom: 0; }
-  .timeline .timeline-heading h4 {
-    margin-top: 0;
-    color: inherit; }
-    .timeline .timeline-heading h4.subheading {
-      text-transform: none; }
+      margin-bottom: 0px; }
+  .timeline .timeline-heading h3 {
+    margin-top: 5px;
+    margin-bottom: 0px;}
+  .timeline .timeline-heading h4,h5 {
+    margin-top: 0px;
+    margin-bottom: 0px; }
+  .timeline .timeline-body {
+    margin-top: 1em;}
   .timeline .timeline-body > ul,
   .timeline .timeline-body > p {
-    margin-bottom: 0; }
+    margin-bottom: 0px; }
   .timeline .timeline-body ul {
     padding-left: 0.5em;
   }
