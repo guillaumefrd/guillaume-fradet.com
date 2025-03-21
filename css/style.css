@@ -242,7 +242,6 @@ header.masthead img {
 
 #portfolio {
   background: #f8f8f8;
-  padding-top: 1em;
 }
 
 #portfolio .portfolio-item {
@@ -720,6 +719,7 @@ code.code-snippet {
 
 #experience {
   background: #f8f8f8;
+  padding-top: 1em;
 }
 
 #link-section {
