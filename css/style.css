@@ -759,6 +759,7 @@ code.code-snippet {
   display: block;
   margin: auto;
   max-width: 100%;
+  max-height: 500px;
 }
 
 #post-container p, h1, h2, h3, h4, h5, blockquote{
