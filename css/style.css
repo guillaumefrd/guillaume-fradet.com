@@ -180,10 +180,6 @@ section {
         outline: none; }
       #mainNav .navbar-nav li.nav-item a.nav-link:active, #mainNav .navbar-nav li.nav-item a.nav-link:focus {
         color: #3e3e3e; }
-    #mainNav .nav-item-posts {
-      border: 0.5px solid #c8bfbf;
-      border-radius: 3px;
-      margin-left: 2em; }
   #mainNav .navbar-toggler {
     font-size: 14px;
     padding: 11px;
@@ -214,6 +210,10 @@ section {
       #mainNav .navbar-nav > li.nav-item > a.nav-link.active:active, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:hover {
         color: white;
         background: #c8bfbf; }
+    #mainNav .nav-item-posts {
+      border: 0.5px solid #c8bfbf;
+      border-radius: 3px;
+      margin-left: 2em; }
   #mainNav.navbar-shrink {
     padding-top: 10px;
     padding-bottom: 10px; }
@@ -751,8 +751,8 @@ code.code-snippet {
 
 #blog-posts ul {
   list-style-type: none;
-  margin-top: 1em;
-  margin-bottom: 1em;
+  margin: 0px;
+  padding: 1em;
 }
 
 #post-container img {
