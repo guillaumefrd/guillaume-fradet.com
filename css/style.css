@@ -768,7 +768,11 @@ code.code-snippet {
   width: 96%;
 }
 
-#post-container h1, h2, h3, h4, h5{
+#post-container h1,
+#post-container h2,
+#post-container h3,
+#post-container h4,
+#post-container h5 {
   margin-top: 1em !important;
   margin-bottom: 1em !important;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
