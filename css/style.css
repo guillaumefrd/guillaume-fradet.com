@@ -60,6 +60,7 @@ h5 {
 
 #profileImg {
   width: 50%;
+  border-radius: 50%;
 }
 
 #linkedin {
