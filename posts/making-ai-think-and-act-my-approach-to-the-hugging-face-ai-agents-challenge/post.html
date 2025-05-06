@@ -1,0 +1,631 @@
+<h2>1. Introduction</h2>
+
+<p>Recently, I followed the excellent (and free!) <a href="https://huggingface.co/learn/agents-course/unit0/introduction">Hugging Face 🤗 AI Agents Course</a>, which I highly recommend to anyone interested in studying AI Agents from theory and design to hands-on practice.</p>
+
+<p>An AI agent is a system that can <strong>take actions on its own</strong> to achieve a goal. Unlike language models (LLMs) like GPT, which only generate text, AI agents can interact with the world. A typical AI agent consists of an <strong>LLM</strong> (used to reason and decide on the next actions) and <strong>tools</strong> (functions that allow the agent to act in the world, such as performing web searches). It must be carefully prompted to follow a sequence of <strong>thought–action–observation</strong> steps.</p>
+
+<p>After the first units of the course (which introduce AI agent libraries such as <a href="https://huggingface.co/docs/smolagents/en/index">smolagents</a>, <a href="https://www.llamaindex.ai/">LlamaIndex</a>, and <a href="https://langchain-ai.github.io/langgraph/">LangGraph</a>), you get to participate to a challenge. This is where things get exciting: building an autonomous agent from scratch that can answer complex, multi-step questions.</p>
+
+<p>Developing my own solution, while watching my agent become more and more competent, has been a lot of fun. I’m proud to share that I ranked in the top 10%! In this post, I’ll walk you through my approach to building a powerful AI agent. Let’s dive in!</p>
+
+<hr />
+
+<h2>2. What is the Challenge?</h2>
+
+<p>The goal is to create an autonomous AI agent that will be evaluated on a subset of the <a href="https://arxiv.org/pdf/2311.12983">GAIA benchmark</a>. The latter consists of questions that are conceptually simple for humans  but remarkably challenging for current AI systems. Here’s an example:</p>
+
+<blockquote>
+  <p>“What country had the least number of athletes at the 1928 Summer Olympics? If there's a tie for a number of athletes, return the first in alphabetical order. Give the IOC country code as your answer.”</p>
+</blockquote>
+
+<p>The approach is straightforward for a human. As long as we have internet access, we have all the tools needed to answer it. But a pure LLM, without access to external tools, would likely fail.</p>
+
+<p>The benchmark uses <strong>exact match</strong> to evaluate answers (i.e., the prediction must match the reference exactly to score), so we must carefully design our agent to return <strong>only</strong> what’s expected, no more, no less.</p>
+
+<p>There’s a public <a href="https://huggingface.co/spaces/agents-course/Students_leaderboard">student leaderboard</a> for the challenge. Note, however, that it doesn't reflect true rankings, since all student solutions are open-source and anyone can reuse their public apps to submit under their own name.</p>
+
+<hr />
+
+<h2>3. My Solution(s)</h2>
+
+<p>I actually built two distinct solutions to explore different frameworks:</p>
+
+<ul>
+<li>The first one uses <a href="https://github.com/run-llama/llama_index">LlamaIndex</a> as the agent framework and <a href="https://huggingface.co/docs/inference-providers/index">Hugging Face</a> as the inference API.</li>
+<li>The second uses <a href="https://github.com/langchain-ai/langgraph">LangGraph</a> and <a href="https://github.com/langchain-ai/langchain">LangChain</a> as the agent framework, with <a href="https://openai.com/api/">OpenAI</a> as the inference API.</li>
+</ul>
+
+<p>You can find my code here: <a href="https://huggingface.co/spaces/guillaumefrd/agents_final_assignment/tree/main">huggingface.co/spaces/guillaumefrd/agents<em>final</em>assignment</a>.</p>
+
+<p><em>Note: You won’t be able to run the app directly without setting the required API keys as environment variables (<code>HF_TOKEN</code>, <code>OPENAI_API_KEY</code>, and <code>BRAVE_SEARCH_API_KEY</code>).</em></p>
+
+<hr />
+
+<h3>3.1. LlamaIndex x Hugging Face</h3>
+
+<p>LlamaIndex is very convenient, offering many integrations that help you get started quickly. These are accessible through <a href="https://llamahub.ai/">LlamaHub</a>, a community-driven repository of tools and data connectors.</p>
+
+<p>The code behind my LlamaIndex agent fits in just 80 lines, check it out <a href="https://huggingface.co/spaces/guillaumefrd/agents_final_assignment/blob/main/llamaindex_dir/agent.py">here</a>. Let’s explore it!</p>
+
+<p><strong>Model (reasoning engine):</strong></p>
+
+<p>First, we define the LLM using the Hugging Face Inference API:</p>
+
+<pre><code class="python language-python"># !pip install llama-index-llms-huggingface-api
+from llama_index.llms.huggingface_api import HuggingFaceInferenceAPI
+
+model_name = "Qwen/Qwen2.5-Coder-32B-Instruct"
+provider = "hf-inference"
+llm = HuggingFaceInferenceAPI(model_name=model_name, provider=provider)
+</code></pre>
+
+<p>The <code>model_name</code> can be any model from the <a href="https://huggingface.co/models?pipeline_tag=text-generation">Hugging Face Model Hub</a> that supports the “text-generation” task.</p>
+
+<p>The <code>provider</code> specifies which Inference provider you want to use (i.e. where the model will make its predictions). By default, we use the Hugging Face inference, but some models are only available through other providers. For instance, the Google <a href="https://huggingface.co/google/gemma-3-27b-it">Gemma 3 27B Instruct</a> model is currently only available through Nebius provider. You can find this information in each model card.</p>
+
+<p>The <code>provider</code> specifies which inference provider you want to use (i.e., where the model runs its predictions). By default, we use the Hugging Face Inference API, but some models are only available through other providers. For instance, the Google <a href="https://huggingface.co/google/gemma-3-27b-it">Gemma 3 27B Instruct</a> model is currently only available through the Nebius provider. You can find this information on each model's page.</p>
+
+<p><em>Fun fact: <code>HuggingFaceInferenceAPI</code> didn’t support providers other than the default until my recent <a href="https://github.com/run-llama/llama_index/pull/18574">contribution</a> to the library!</em></p>
+
+<p><img src="attachment:311e23e5-f2b4-487b-a050-c8142f0da54b:image.png" alt="image.png" /></p>
+
+<p>Each inference call is billed, depending on the provider’s pricing and the model used. The larger the model, the more expensive the call.</p>
+
+<p>To save costs, I debugged using smaller models like <a href="https://huggingface.co/Qwen/Qwen2.5-Coder-7B-Instruct">Qwen2.5-Coder-7B-Instruct</a>, and reserved the larger models for final runs. I didn’t go as far as using huge models like <a href="https://huggingface.co/deepseek-ai/DeepSeek-R1">DeepSeek-R1</a> (671B parameters). While such a model would likely improve performance, it would also significantly increase the bill!</p>
+
+<p><strong>Tools (to take actions):</strong></p>
+
+<p>After defining the model and the API provider, we define the <strong>tools</strong> of the agent, so that it can take actions. Here, we’ll continue to use the <a href="https://llamahub.ai/">LlamaHub</a> to load tools already developed by the community, but we’ll also define custom tools.</p>
+
+<p>Once the model and API provider are set, the next step is to define the agent’s <strong>tools,</strong> the functions that allow it to take actions in the world. Here, we use <a href="https://llamahub.ai/">LlamaHub</a> to load prebuilt tools developed by the community, and we also define some custom tools tailored to the challenge.</p>
+
+<pre><code class="python language-python"># each of the import needs to be installed before (e.g. pip install llama-index-tools-wikipedia)
+from llama_index.tools.wikipedia import WikipediaToolSpec
+from llama_index.tools.duckduckgo import DuckDuckGoSearchToolSpec
+from llama_index.tools.code_interpreter import CodeInterpreterToolSpec
+
+tool_spec_list = []
+tool_spec_list += WikipediaToolSpec().to_tool_list()        # to query wikipedia
+tool_spec_list += DuckDuckGoSearchToolSpec().to_tool_list() # to make web search
+tool_spec_list += CodeInterpreterToolSpec().to_tool_list()  # to run python code
+</code></pre>
+
+<p>Now, let’s define some <strong>custom tools</strong> to extend the agent’s capabilities, so it can interpret images or analyze audio files.</p>
+
+<pre><code class="python language-python">from huggingface_hub import InferenceClient
+from llama_index.core.tools import FunctionTool
+
+# --- Functions --- #
+
+def query_image(query: str, image_url: str) -&gt; str:
+    """Ask anything about an image using a Vision Language Model
+
+    Args:
+        query (str): the query about the image, e.g. how many persons are on the image?
+        image_url (str): the URL to the image
+    """
+
+    client = InferenceClient(provider="nebius")
+    try:
+        completion = client.chat.completions.create(
+            model="google/gemma-3-27b-it",
+            messages=[
+                {
+                    "role": "user",
+                    "content": [
+                        {
+                            "type": "text",
+                            "text": query
+                        },
+                        {
+                            "type": "image_url",
+                            "image_url": {
+                                "url": image_url
+                            }
+                        }
+                    ]
+                }
+            ],
+            max_tokens=512,
+        )
+        return completion.choices[0].message
+
+    except Exception as e:
+        return f"query_image failed: {e}"
+
+def automatic_speech_recognition(file_url: str) -&gt; str:
+    """Transcribe an audio file to text
+
+    Args:
+        file_url (str): the URL to the audio file
+    """
+    client = InferenceClient(provider="fal-ai")
+    try:
+        return client.automatic_speech_recognition(file_url, model="openai/whisper-large-v3")
+    except Exception as e:
+        return f"automatic_speech_recognition failed: {e}"
+
+### --- Tool instance ---
+
+query_image_tool = FunctionTool.from_defaults(query_image)
+automatic_speech_recognition_tool = FunctionTool.from_defaults(automatic_speech_recognition)
+
+# add the custom tools to the tools list
+tool_spec_list += [query_image_tool, automatic_speech_recognition_tool]
+
+</code></pre>
+
+<p>We need to make sure to include <strong>typing information</strong> and a clear <strong>docstring description</strong> in each tool function. This helps the LLM understand what each function does and when to use it appropriately.</p>
+
+<hr />
+
+<p><strong>Agent definition (LLM + tools):</strong></p>
+
+<p>Now that all our tools are in place, we can define our agent using the <code>ReActAgent</code> workflow. “ReAct” (short for <strong>Reason + Act</strong>) is an approach introduced in <a href="https://arxiv.org/pdf/2210.03629">this paper</a>, which guides the LLM to break down its reasoning into structured steps: <strong>Thought → Action → Observation</strong>. This prompting strategy helps the agent stay focused and transparent in its decision-making.</p>
+
+<pre><code class="python language-python">from llama_index.core.agent.workflow import ReActAgent
+
+agent = ReActAgent(llm=llm, tools=tool_spec_list)
+</code></pre>
+
+<p><strong>Prompt:</strong></p>
+
+<p>Finally, we customize the default ReAct system prompt for our agent. The goal is to ensure that the agent returns a final answer in the <strong>exact format</strong> required by the GAIA benchmark. (Remember: to score, the agent’s answer must <strong>exactly match</strong> the reference).</p>
+
+<pre><code class="python language-python">from llama_index.core import PromptTemplate
+
+# custom ReAct prompt where we add the GAIA team prompting example at the beginning
+custom_react_system_header_str = """\
+
+You are a general AI assistant.
+A human will ask you a question. Report your Thoughts, Actions, Observations as described in ## Output Format, and finish your answer with the following template: FINAL ANSWER: [YOUR FINAL ANSWER HERE]
+YOUR FINAL ANSWER should be a number OR as few words as possible OR a comma separated list of numbers and/or strings.
+If you are asked for a number, don't use comma to write your number neither use units such as $ or percent sign unless specified otherwise.
+If you are asked for a string, don't use articles, neither abbreviations (e.g. for cities), and write the digits in plain text unless specified otherwise.
+If you are asked for a comma separated list, apply the above rules depending of whether the element to be put in the list is a number or a string.
+
+## Tools
+
+You have access to a wide variety of tools. You are responsible for using the tools in any sequence you deem appropriate to complete the task at hand.
+This may require breaking the task into subtasks and using different tools to complete each subtask.
+
+You have access to the following tools:
+{tool_desc}
+
+## Output Format
+
+Please answer in the same language as the question and use the following format:
+
+'''
+Thought: The current language of the user is: (user's language). I need to use a tool to help me answer the question.
+Action: tool name (one of {tool_names}) if using a tool.
+Action Input: the input to the tool, in a JSON format representing the kwargs (e.g. {{"input": "hello world", "num_beams": 5}})
+'''
+
+Please ALWAYS start with a Thought.
+
+NEVER surround your response with markdown code markers. You may use code markers within your response if you need to.
+
+Please use a valid JSON format for the Action Input. Do NOT do this {{'input': 'hello world', 'num_beams': 5}}.
+
+If this format is used, the tool will respond in the following format:
+
+'''
+Observation: tool response
+'''
+
+You should keep repeating the above format till you have enough information to answer the question without using any more tools. At that point, you MUST respond in one of the following two formats:
+
+'''
+Thought: I can answer without using any more tools. I'll use the user's language to answer
+FINAL ANSWER: [YOUR FINAL ANSWER HERE (In the same language as the user's question)]
+'''
+
+'''
+Thought: I cannot answer the question with the provided tools.
+FINAL ANSWER: [YOUR FINAL ANSWER HERE (In the same language as the user's question)]
+'''
+
+## Current Conversation
+
+Below is the current conversation consisting of interleaving human and assistant messages.
+"""
+
+# update default prompt with a custom one
+custom_react_system_header = PromptTemplate(custom_react_system_header_str)
+agent.update_prompts({"react_header": custom_react_system_header})
+</code></pre>
+
+<p><strong>Run the agent and post-processing:</strong></p>
+
+<p>That’s it! Our agent is now ready to answer questions by taking actions! The final step is to invoke the agent and post-process its response to extract only the final answer.</p>
+
+<pre><code class="python language-python">question = "A question that involves taking actions"
+
+handler = agent.run(question)
+async for ev in handler.stream_events():
+    # uncomment to see the tool output
+    # if isinstance(ev, ToolCallResult):
+    #     print(f"\nCall {ev.tool_name} with {ev.tool_kwargs}\nReturned: {ev.tool_output}")
+    if isinstance(ev, AgentStream):
+        print(f"{ev.delta}", end="", flush=True)
+
+# run the query
+response = await handler
+
+# post-process the response (cast AgentOutput to str and keep only what's after "FINAL ANSWER:" for the exact match)
+response = str(response)
+try:
+    response = response.split("FINAL ANSWER:")[-1].strip()
+except:
+    print('Could not split response on "FINAL ANSWER:"')
+print("\n\n"+"-"*50)
+print(f"Agent returning with answer: {response}")
+</code></pre>
+
+<p><strong>Example run:</strong></p>
+
+<p>In this example, the agent is asked to <strong>analyze an audio file</strong> to answer a question. We can see that it correctly takes the appropriate action by calling our custom tool <code>automatic_speech_recognition</code>. Once it receives the transcription, it has everything it needs to reason through the problem and format its final answer.</p>
+
+<pre><code class="python language-python">**************************************************
+Agent received question: Hi, I was out sick from my classes on Friday, so I'm trying to figure out what I need to study for my Calculus mid-term next week. My friend from class sent me an audio recording of Professor Willowbrook giving out the recommended reading for the test, but my headphones are broken :(
+
+Could you please listen to the recording for me and tell me the page numbers I'm supposed to go over? I've attached a file called Homework.mp3 that has the recording. Please provide just the page numbers as a comma-delimited list. And please provide the list in ascending order.
+File URL: "https://agents-course-unit4-scoring.hf.space/files/1f975693-876d-457b-a649-393859e79bf3" (.mp3 file)
+**************************************************
+
+Thought: The current language of the user is: English. I need to use a tool to help me answer the question.
+Action: automatic_speech_recognition
+Action Input: {"file_url": "https://agents-course-unit4-scoring.hf.space/files/1f975693-876d-457b-a649-393859e79bf3"}
+Call automatic_speech_recognition with {'file_url': 'https://agents-course-unit4-scoring.hf.space/files/1f975693-876d-457b-a649-393859e79bf3'}
+Returned: AutomaticSpeechRecognitionOutput(text=" Before you all go, I want to remind you that the midterm is next week. Here's a little hint. You should be familiar with the differential equations on page 245. Problems that are very similar to problems 32, 33 and 44 from that page might be on the test. And also some of you might want to brush up on the last page in the integration section, page 197. I know some of you struggled on last week's quiz. I foresee problem 22 from page 197 being on your midterm. Oh, and don't forget to brush up on the section on related rates on pages 132, 133 and 134.")
+Thought: I can answer without using any more tools. I'll use the user's language to answer
+FINAL ANSWER: 132, 133, 134, 197, 245
+
+--------------------------------------------------
+Agent returning with answer: 132, 133, 134, 197, 245
+</code></pre>
+
+<p><strong>Benchmark:</strong></p>
+
+<p>Using the <a href="https://huggingface.co/Qwen/Qwen2.5-Coder-32B-Instruct">Qwen2.5-Coder-32B-Instruct</a> model along with the tools we've defined, the agent was able to achieve a <strong>25%</strong> score.</p>
+
+<p>At this point, I could have improved the performance by upgrading both the model and the agent’s toolkit. However, I chose to explore another framework first, with the intention of optimizing my favorite solution later. <em>Spoiler alert: It was LangGraph.</em></p>
+
+<hr />
+
+<h3>3.2. LangGraph x OpenAI</h3>
+
+<p><a href="https://langchain-ai.github.io/langgraph/">LangGraph</a>, built alongside the widely used <a href="https://python.langchain.com/docs/introduction/">LangChain</a> framework, is designed to help build <strong>controllable agents</strong>. It uses a simple graph system made of nodes and links, allowing you to customize the level of control over the agent’s behavior.</p>
+
+<p>With that said, let’s build our LangGraph agent (which you can find <a href="https://huggingface.co/spaces/guillaumefrd/agents_final_assignment/blob/main/langgraph_dir/agent.py">here</a>)! You’ll notice similarities with our previous agent built with LlamaIndex.</p>
+
+<p><strong>Model (reasoning engine):</strong></p>
+
+<p>For the inference provider, I decided to use the <strong>OpenAI API</strong>, but I could have opted for other providers as well. LangChain supports many <a href="https://python.langchain.com/docs/integrations/chat/">different providers</a>, such as Hugging Face, Mistral AI, Anthropic, and more.</p>
+
+<pre><code class="python language-python">from langchain_openai import ChatOpenAI
+
+# load gpt-4.1-nano (cheap, for debug) with temperature=0 for less randomness
+llm = ChatOpenAI(model="gpt-4.1-nano", temperature=0)
+</code></pre>
+
+<p>As explained before, I used cheap model for debugging (here gpt-4.1-nano). Indeed, the bill can grow quickly with agents that make multiple requests autonomously, sometime loading entire web page and giving it as input to the LLM.</p>
+
+<p>As mentioned earlier, I used a cheaper model for debugging purposes (in this case, <strong>gpt-4.1-nano</strong>). The reason for this is that the bill can quickly add up when dealing with agents that make multiple autonomous requests, sometimes even loading entire web pages and sending them as input to the LLM.</p>
+
+<p>One thing I really appreciate about the OpenAI Platform is that their <a href="https://platform.openai.com/docs/pricing">pricing</a> is transparent. You’re charged based on the model you select, the number of tokens you send, and the number of tokens you receive.</p>
+
+<p><img src="attachment:4a4ab6da-d362-4295-8b22-2b07d606876d:image.png" alt="image.png" /></p>
+
+<p><strong>Tools (to take actions):</strong></p>
+
+<p>Now, let’s define our tools. As with LlamaIndex and LlamaHub, LangChain offers <a href="https://github.com/langchain-ai/langchain-community/tree/main/libs/community/langchain_community/tools">ready-to-use tools</a>. In this case, we’ll use the <strong>BraveSearch</strong> tool from the community and define the remaining tools ourselves. You can find the custom tool definitions in my repo <a href="https://huggingface.co/spaces/guillaumefrd/agents_final_assignment/blob/main/langgraph_dir/custom_tools.py">here</a>.</p>
+
+<p><em>Note: I replaced the DuckDuckGo tool with BraveSearch because I found it to be more performant. The results are closer to what you’d get from a Google search, and it’s free with a limit of 2,000 requests per month.</em></p>
+
+<pre><code class="python language-python">from langchain_community.tools import BraveSearch
+from .custom_tools import (multiply, add, subtract, divide, modulus, power,
+    query_image, automatic_speech_recognition, get_webpage_content, python_repl_tool,
+    get_youtube_transcript)
+
+community_tools = [
+    BraveSearch.from_api_key(   # Web search (more performant than DuckDuckGo)
+        api_key=os.getenv("BRAVE_SEARCH_API_KEY"), # needs BRAVE_SEARCH_API_KEY in env
+        search_kwargs={"count": 5}), # returns the 5 best results with their URL
+]
+custom_tools = [
+    multiply, add, subtract, divide, modulus, power,  # Basic arithmetic
+    query_image, # Ask anything about an image using a VLM
+    automatic_speech_recognition, # Transcribe an audio file to text
+    get_webpage_content, # Load a web page and return it to markdown
+    python_repl_tool, # Python code interpreter
+    get_youtube_transcript, # Get the transcript of a YouTube video
+]
+
+tools = community_tools + custom_tools
+tools_by_name = {tool.name: tool for tool in tools} # for later, to call the tools
+llm_with_tools = llm.bind_tools(tools) # give the tools to the LLM
+</code></pre>
+
+<p><strong>Agent definition (LLM + tools):</strong></p>
+
+<p>Here, we define the graph workflow of our agent. The goal is to have the LLM (reasoning engine) call tools (i.e., take actions and gather more knowledge) until it has enough information to formulate a final answer.</p>
+
+<p>To implement this, we define two nodes:</p>
+
+<ul>
+<li><code>llm_call</code>: This node represents the point where the LLM is called with the full history of all messages (system prompt + human question + previous steps taken by the agent). From here, the LLM will either call a tool (or multiple tools simultaneously) or provide a final answer, completing the workflow.</li>
+<li><code>tool_node</code>: This node executes the tools that the LLM decided to call. Once the tool(s) are executed, the output is added to the message history.</li>
+</ul>
+
+<p>Next, we define the links (edges) between the nodes:</p>
+
+<ul>
+<li>First, we always start with <code>llm_call</code> (START → <code>llm_call</code>).</li>
+<li>Then, <code>llm_call</code> can either go to <code>tool_node</code> (if the LLM decides to call a tool), or it can end the workflow by providing a final answer (conditional edges: <code>llm_call</code> → <code>tool_node</code> or <code>llm_call</code> → END).</li>
+<li>Finally, <code>tool_node</code> always loops back to <code>llm_call</code> (<code>tool_node</code> → <code>llm_call</code>).</li>
+</ul>
+
+<p>Once we’ve defined the code and called <code>agent_builder.compile()</code>, we can visualize the agent’s graph workflow:</p>
+
+<p><img src="attachment:30dd538e-69be-49f7-98f4-708e8516a346:image.png" alt="image.png" /></p>
+
+<pre><code class="python language-python">from typing import Literal
+from langchain_core.messages import SystemMessage, HumanMessage, ToolMessage
+from langgraph.graph import MessagesState
+from langgraph.graph import StateGraph, START, END
+
+# customized GAIA system prompt
+system_prompt = """\
+You are a general AI assistant with tools.
+I will ask you a question. Use your tools, and answer with the following template: FINAL ANSWER: [YOUR FINAL ANSWER]. \
+YOUR FINAL ANSWER should be a number OR as few words as possible OR a comma separated list of numbers and/or strings.
+If you are asked for a number, don't use comma to write your number neither use units such as $ or percent sign unless specified otherwise.
+If you are asked for a string, don't use articles, neither abbreviations (e.g. for cities), and write the digits in plain text unless specified otherwise.
+If you are asked for a comma separated list, apply the above rules depending of whether the element to be put in the list is a number or a string.
+If you use the python_repl tool (code interpreter), always end your code with `print(...)` to see the output.
+"""
+
+# Nodes
+def llm_call(state: MessagesState):
+    """LLM decides whether to call a tool or not"""
+
+    return {
+        "messages": [
+            llm_with_tools.invoke(
+                [
+                    SystemMessage(
+                        content=system_prompt
+                    )
+                ]
+                + state["messages"]
+            )
+        ]
+    }
+
+def tool_node(state: dict):
+    """Performs the tool call"""
+
+    result = []
+    for tool_call in state["messages"][-1].tool_calls:
+        tool = tools_by_name[tool_call["name"]]
+        observation = tool.invoke(tool_call["args"])
+        result.append(ToolMessage(content=observation, tool_call_id=tool_call["id"]))
+    return {"messages": result}
+
+# Conditional edge function to route to the tool node or end based upon whether the LLM made a tool call
+def should_continue(state: MessagesState) -&gt; Literal["environment", END]:
+    """Decide if we should continue the loop or stop based upon whether the LLM made a tool call"""
+
+    messages = state["messages"]
+    last_message = messages[-1]
+    # If the LLM makes a tool call, then perform an action
+    if last_message.tool_calls:
+        return "Action"
+    # Otherwise, we stop (reply to the user)
+    return END
+
+# Build workflow
+agent_builder = StateGraph(MessagesState)
+
+# Add nodes
+agent_builder.add_node("llm_call", llm_call)
+agent_builder.add_node("environment", tool_node)
+
+# Add edges to connect nodes
+agent_builder.add_edge(START, "llm_call")
+agent_builder.add_conditional_edges(
+    "llm_call",
+    should_continue,
+    {
+        # Name returned by should_continue : Name of next node to visit
+        "Action": "environment",
+        END: END,
+    },
+)
+agent_builder.add_edge("environment", "llm_call")
+
+# Compile the agent
+agent = agent_builder.compile()
+
+# Show the agent
+agent.get_graph(xray=True).draw_mermaid_png()
+</code></pre>
+
+<p><strong>Run the agent and post-processing:</strong></p>
+
+<p>Now is the time to try our LangGraph autonomous agent in action!</p>
+
+<pre><code class="python language-python">question = "A question that involves taking actions"
+
+# create the input
+messages = [HumanMessage(content=question)]
+
+# call the agent
+messages = agent.invoke(
+    {"messages": messages},
+    {"recursion_limit": 30}) # maximum number of steps before hitting a stop condition
+
+# print all the steps taken
+for m in messages["messages"]:
+    m.pretty_print()
+
+# post-process the response (keep only what's after "FINAL ANSWER:" for the exact match)
+response = str(messages["messages"][-1].content)
+try:
+    response = response.split("FINAL ANSWER:")[-1].strip()
+except:
+    print('Could not split response on "FINAL ANSWER:"')
+print("\n\n"+"-"*50)
+print(f"Agent returning with answer: {response}")
+</code></pre>
+
+<p><strong>Example run:</strong></p>
+
+<p>To answer this new question from the challenge, the agent needs to download an Excel sheet and compute the total sales from a restaurant chain (excluding drinks). Let’s see how it performs!</p>
+
+<p>Running with <strong>o4-mini</strong>, the LLM decides to call the <strong>Python code interpreter</strong> and passes the following code as an argument: it loads the Excel sheet using the pandas library, then returns the first few rows of the dataframe and its column names.</p>
+
+<p>In the second call, it tries to sum all the dataframe values (which is a mistake since it must exclude the “Soda” column). However, it forgets to add a <code>print</code> statement, resulting in an empty output from the code interpreter.</p>
+
+<p>In the third call, the agent corrects itself, summing the appropriate columns and printing the result.</p>
+
+<p>Before returning the final answer, it makes an extra and unnecessary call to print the dataframe shape, which doesn’t contribute to the solution.</p>
+
+<p>Finally, the agent returns the correct total sales, formatted to two decimal places as requested.</p>
+
+<pre><code class="python language-python">**************************************************
+Agent received question: The attached Excel file contains the sales of menu items for a local fast-food chain. What were the total sales that the chain made from food (not including drinks)? Express your answer in USD with two decimal places.
+File URL: "https://agents-course-unit4-scoring.hf.space/files/7bd855d8-463d-4ed5-93ca-5fe35145f733" (.xlsx file)
+**************************************************
+Python REPL can execute arbitrary code. Use with caution.
+================================ Human Message =================================
+
+The attached Excel file contains the sales of menu items for a local fast-food chain. What were the total sales that the chain made from food (not including drinks)? Express your answer in USD with two decimal places.
+File URL: "https://agents-course-unit4-scoring.hf.space/files/7bd855d8-463d-4ed5-93ca-5fe35145f733" (.xlsx file)
+================================== Ai Message ==================================
+Tool Calls:
+  python_repl (call_E9qx9MQB1wYw0jLaN9Qe0dOI)
+ Call ID: call_E9qx9MQB1wYw0jLaN9Qe0dOI
+  Args:
+    code: import pandas as pd
+
+df = pd.read_excel('https://agents-course-unit4-scoring.hf.space/files/7bd855d8-463d-4ed5-93ca-5fe35145f733')
+
+print(df.head(), df.columns)
+================================= Tool Message =================================
+
+    Location  Burgers  Hot Dogs  Salads  Fries  Ice Cream  Soda
+0  Pinebrook     1594      1999    2002   2005       1977  1980
+1   Wharvton     1983      2008    2014   2015       2017  2018
+2    Sagrada     2019      2022    2022   2023       2021  2019
+3  Algrimand     1958      1971    1982   1989       1998  2009
+4    Marztep     2015      2016    2018   2019       2021  2022 Index(['Location', 'Burgers', 'Hot Dogs', 'Salads', 'Fries', 'Ice Cream',
+       'Soda'],
+      dtype='object')
+
+================================== Ai Message ==================================
+Tool Calls:
+  python_repl (call_3QSp1lnn4zeTEdGYAck8PQN2)
+ Call ID: call_3QSp1lnn4zeTEdGYAck8PQN2
+  Args:
+    code: df.sum()
+================================= Tool Message =================================
+
+================================== Ai Message ==================================
+Tool Calls:
+  python_repl (call_X90NEBSmN5XHbw6DHeNTGNiS)
+ Call ID: call_X90NEBSmN5XHbw6DHeNTGNiS
+  Args:
+    code: food_cols = ['Burgers','Hot Dogs','Salads','Fries','Ice Cream']
+food_total = df[food_cols].sum().sum()
+print(food_total)
+================================= Tool Message =================================
+
+89706
+
+================================== Ai Message ==================================
+Tool Calls:
+  python_repl (call_3k4qiJ2Sq1sFLSbgTotzCXaP)
+ Call ID: call_3k4qiJ2Sq1sFLSbgTotzCXaP
+  Args:
+    code: print(df.shape)
+================================= Tool Message =================================
+
+(9, 7)
+
+================================== Ai Message ==================================
+
+FINAL ANSWER: 89706.00
+
+--------------------------------------------------
+Agent returning with answer: 89706.00
+</code></pre>
+
+<p><strong>Observability:</strong></p>
+
+<p>LangChain provides a powerful tool for monitoring and evaluating LLM applications: <a href="https://docs.smith.langchain.com/">LangSmith</a>. It’s a fantastic way to track and visualize agent behavior in real-time.</p>
+
+<p>To configure LangSmith, you only need to set up two environment variables:</p>
+
+<pre><code class="bash language-bash">export LANGSMITH_API_KEY="XXX" # get yours for free in smith.langchain.com
+export LANGSMITH_TRACING=true
+</code></pre>
+
+<p>From this point, all our agent runs will be traced in our web app, with all the stats included (time to execute, tokens used, cost, errors, etc). It is particularly useful to debug the runs that failed.</p>
+
+<p>Once this is done, all our agent runs will be traced in the web app, with useful stats such as execution time, tokens used, cost, errors, and more. This is especially helpful when debugging failed runs.</p>
+
+<p>For example, when I ran the previous query with “gpt-4.1-mini” instead of “o4-mini,” the agent failed to answer within 30 steps (it got lost in the matrix 💊) and ended up hitting the recursion limit.</p>
+
+<p><img src="attachment:e4214870-f8e1-4ca7-86ec-0a451fbf1068:image.png" alt="image.png" /></p>
+
+<p>We can also view the detailed trace of each run and easily share it. Check out this example: <a href="https://smith.langchain.com/public/c5e4a73f-1a21-4e8b-829c-471b7616c60e/r">LangSmith Trace</a>.</p>
+
+<p><img src="attachment:44f3af87-d08c-4d7d-b41b-1b5c5dccd88b:image.png" alt="image.png" /></p>
+
+<p><strong>Benchmark:</strong></p>
+
+<p>With this implementation and set of tools, the agent was able to score as follows on the benchmark:</p>
+
+<ul>
+<li><strong>30%</strong> with <strong>gpt-4.1-mini</strong></li>
+<li><strong>60%</strong> with <strong>o4-mini</strong></li>
+</ul>
+
+<p>The performance gain is considerable, undoubtedly due to the use of a reasoning model that has been post-trained to enhance logical reasoning and multi-step problem-solving capabilities.</p>
+
+<p>It clearly demonstrates that we need powerful models inside our agent to solve questions that involve multiple steps. Let’s recall that the LLM is the reasoning engine of the agent.</p>
+
+<p>This clearly demonstrates that we need <strong>powerful models</strong> inside our agents to effectively solve questions that involve multiple steps. After all, the LLM is the reasoning engine of the agent.</p>
+
+<p>Of course, switching to more capable models usually comes with the tradeoff of increased costs (in my case by a factor of 2.75 for the same number of tokens). For this reason, I only used <strong>o4-mini</strong> for my final run across the 20 questions of the benchmark. To my pleasant surprise, the agent required fewer steps to answer the questions, resulting in fewer tokens generated and ultimately reducing the API costs.</p>
+
+<hr />
+
+<h2>4. Key Takeaways</h2>
+
+<p>Building AI agents for the Hugging Face Challenge has been an exciting and insightful learning experience. Here are the key takeaways from developing and testing my solutions:</p>
+
+<ul>
+<li><strong>AI Agents are action-takers:</strong> AI agents are more than just text predictors, they are systems designed to act independently to achieve specific goals. With an LLM for reasoning and a toolkit for interacting with the real world, agents can take actions. The Hugging Face AI Agents Course was a fantastic launchpad for understanding this, from theory to hands-on practice.</li>
+<li><strong>The GAIA benchmark is a true test:</strong> Tackling the GAIA benchmark really tested my agent-building skills. These questions, simple for humans, require sophisticated multi-step reasoning and precise tool usage from an AI, especially given the strict "exact match" scoring.</li>
+<li><strong>Frameworks matter, and model choice is essential:</strong> My experimentation with two distinct approaches was enlightening:</li>
+<li><strong>Frameworks matter, and model choice is essential:</strong>
+<ul>
+<li>My first agent, built with <strong>LlamaIndex</strong> and the <strong>Hugging Face Inference API</strong>, was a good starting point, achieving a 25% score on the benchmark. The ease of integration with LlamaHub made it a great way to get started.</li>
+<li>Switching to <strong>LangGraph</strong> and <strong>OpenAI</strong> had a noticeable impact on performance. The structured approach of LangGraph, along with the capabilities of OpenAI's models (particularly <code>o4-mini</code>), helped improve the score—first to 30% with <code>gpt-4.1-mini</code>, and then to 60% with <code>o4-mini</code>. This really highlighted how much the choice of reasoning engine can affect results on complex tasks. With more time and compute budget, I would have like to try powerful open-weight models (e.g. Llama 4, DeepSeek R1, Mistral Large).</li>
+<li>Switching to <strong>LangGraph</strong> and <strong>OpenAI</strong> led to a noticeable performance boost. The structured approach of LangGraph, combined with the powerful reasoning engine of OpenAI’s models (especially <code>o4-mini</code>), improved the score: 30% with <code>gpt-4.1-mini</code> and 60% with <code>o4-mini</code>. This demonstrated how much the choice of reasoning model can impact results on complex tasks. With more time and compute resources, I’d love to experiment with open-weight models like Llama 4, DeepSeek R1, or Mistral Large.</li>
+</ul></li>
+<li><strong>Smart tooling and prompting are key:</strong> An agent is only as good as its tools and the instructions it's given. I found that a combination of community tools (like BraveSearch, which performed better than DuckDuckGo) and custom functions for image and audio processing worked well. Careful prompt engineering was also crucial to ensure the agent provided the right output format. In the future, I could explore integrating MCP (Model Context Protocol) to give the agent access to more tools and data sources.</li>
+<li><strong>Developing with costs in mind:</strong> A practical approach I adopted was debugging with smaller, more affordable models, saving the larger, more powerful models for final benchmark runs. Interestingly, the more capable <strong>o4-mini</strong>, while having a higher per-token cost, often solved problems more efficiently, ultimately balancing the overall expense.</li>
+<li><strong>Observability helps a lot:</strong> Using <strong>LangSmith</strong> with my <strong>LangGraph</strong> agent was very beneficial. The ability to trace the agent’s steps, check token usage, and debug issues made the development process much smoother and more efficient.</li>
+<li><strong>Learning through iteration:</strong> This project emphasized the importance of an iterative approach. Building an initial version, experimenting with different frameworks, and refining my approach resulted in improvements and a deeper understanding of what makes an AI agent work effectively. I was also glad to make a small contribution to LlamaIndex during this time.</li>
+</ul>
+
+<p>Overall, building these agents was a lot of fun. It’s clear that while the LLM is at the heart of the agent, the agent's architecture, tools, and prompt design play significant roles in its ability to solve complex, multi-step problems. I hope that sharing my experience will help others exploring the exciting world of AI agents!</p>
+
+<p>Finally, I want to thank Hugging Face and the instructors behind this fantastic course (Joffrey Thomas, Ben Burtenshaw, Thomas Simonini, Sergio Paniego) 🤗</p>
+
+<p>Cheers!</p>
