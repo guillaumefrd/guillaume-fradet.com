@@ -146,6 +146,13 @@
   top: -0.75rem;
   border-radius: 3px;
 }
+.blog-card .description ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1rem; /* reduce default browser indent */
+}
+.blog-card .description ul li {
+  margin-left: 0;
+}
 .blog-card:hover .details {
   left: 0%;
 }
